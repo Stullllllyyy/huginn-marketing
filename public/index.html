@@ -57,6 +57,9 @@ body{font-family:var(--font-body);color:var(--silver);background:var(--obsidian-
 .btn-login{font-family:var(--font-heading);font-size:13px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--silver-dim);text-decoration:none;padding:8px 20px;border:1px solid rgba(188,198,204,0.2);border-radius:4px;transition:all 0.25s;cursor:pointer}
 .btn-login:hover{color:var(--silver);border-color:rgba(188,198,204,0.4);background:rgba(188,198,204,0.06)}
 .btn-login:focus-visible{outline:2px solid var(--bronze);outline-offset:3px}
+.nav-link{font-family:var(--font-heading);font-size:13px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--silver-dim);text-decoration:none;padding:8px 16px;transition:color 0.25s}
+.nav-link:hover{color:var(--bronze)}
+.nav-link:focus-visible{outline:2px solid var(--bronze);outline-offset:3px}
 
 /* ── BUTTONS ─────────────────────────────────────────────────── */
 .btn-gold{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--font-heading);font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--obsidian-deep);background:var(--bronze);border:none;border-radius:4px;padding:16px 40px;cursor:pointer;transition:transform 0.25s var(--ease-out),box-shadow 0.25s,background 0.2s;box-shadow:0 4px 20px rgba(140,115,85,0.3);text-decoration:none;white-space:nowrap;-webkit-appearance:none}
@@ -193,6 +196,7 @@ section{position:relative}
     <span class="nav-wordmark">Huginn</span>
   </a>
   <div class="nav-actions">
+    <a href="/about" class="nav-link">About</a>
     <a href="https://cooley-lake-tracker.vercel.app" class="btn-login" target="_blank" rel="noopener" aria-label="Log in to Huginn app">Login</a>
   </div>
 </nav>
@@ -267,11 +271,7 @@ section{position:relative}
 
 <!-- SECTION 3: BUILT IN THE FIELD -->
 <section class="field" id="field" aria-labelledby="fieldHeading">
-  <div class="field-bg" id="fieldBg" style="background-image:url('/images/sunset.jpg')" role="img" aria-label="Hunter with bow at golden hour">
-    <div class="hero-placeholder" aria-hidden="true" style="background:linear-gradient(160deg,#1a1508 0%,#0d1008 100%)">
-      <span class="hero-placeholder-inner">sunset.jpg</span>
-    </div>
-  </div>
+  <div class="field-bg" id="fieldBg" style="background-image:url('/images/sunset.jpg')" role="img" aria-label="Hunter with bow at golden hour"></div>
   <div class="field-overlay" aria-hidden="true"></div>
   <div class="field-content">
     <span class="section-eyebrow reveal">Our Story</span>
@@ -282,11 +282,7 @@ section{position:relative}
 
 <!-- SECTION 4: THE RESULT -->
 <section class="result" id="result" aria-label="The result">
-  <div class="result-bg" id="resultBg" style="background-image:url('/images/buck.jpg')" role="img" aria-label="Whitetail buck in fall foliage">
-    <div class="hero-placeholder" aria-hidden="true" style="background:linear-gradient(160deg,#0e1205 0%,#0a0c08 100%)">
-      <span class="hero-placeholder-inner">buck.jpg</span>
-    </div>
-  </div>
+  <div class="result-bg" id="resultBg" style="background-image:url('/images/buck.jpg')" role="img" aria-label="Whitetail buck in fall foliage"></div>
   <div class="result-overlay" aria-hidden="true"></div>
   <div class="field-content">
     <blockquote class="result-quote reveal">Every piece of intel. Building toward one moment.</blockquote>
@@ -297,10 +293,9 @@ section{position:relative}
 <!-- SECTION 5: JOIN THE WAITLIST -->
 <section class="waitlist" id="waitlist" aria-labelledby="waitlistTitle">
   <div class="section-inner waitlist-inner">
-    <img src="/HuginnRaven.png" alt="Huginn" class="waitlist-raven reveal" width="48" height="48"/>
-    <h2 class="waitlist-title reveal reveal-delay-1" id="waitlistTitle">Huginn is in<br/>private beta.</h2>
-    <p class="waitlist-sub reveal reveal-delay-2">Join the waitlist and we'll reach out when your spot is ready.</p>
-    <div class="waitlist-form-wrap reveal reveal-delay-3">
+    <h2 class="waitlist-title reveal" id="waitlistTitle">Huginn is in<br/>private beta.</h2>
+    <p class="waitlist-sub reveal reveal-delay-1">Join the waitlist and we'll reach out when your spot is ready.</p>
+    <div class="waitlist-form-wrap reveal reveal-delay-2">
       <form class="waitlist-form" id="waitlistForm" novalidate>
         <label for="waitlistEmail" class="sr-only">Email address</label>
         <input
