@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>About — Huginn</title>
+<meta name="description" content="The story behind Huginn — built by a hunter who needed a better way to turn trail camera data into hunt intelligence."/>
+<meta property="og:title" content="About — Huginn"/>
+<meta property="og:description" content="Built from the field up. The story behind Huginn."/>
+<meta property="og:image" content="/images/aboutone.JPG"/>
+<link rel="icon" href="/HuginnRaven.png" type="image/png"/>
+<link rel="apple-touch-icon" href="/HuginnRaven.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Raleway:wght@300;400;500;600;700&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet"/>
+
+<style>
+/* ── RESET & TOKENS ─────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --obsidian:#121415;
+  --obsidian-deep:#0a0b0c;
+  --obsidian-mid:#1a1c1e;
+  --bronze:#8C7355;
+  --bronze-light:#a08468;
+  --sulfur:#E5B53B;
+  --tungsten:#4A4D4E;
+  --silver:#BCC6CC;
+  --silver-dim:#8a9499;
+  --font-display:'Bebas Neue',sans-serif;
+  --font-heading:'Raleway',sans-serif;
+  --font-body:'Barlow',sans-serif;
+  --nav-h:72px;
+  --ease-out:cubic-bezier(0.22,1,0.36,1);
+}
+html{scroll-behavior:smooth;background:var(--obsidian-deep)}
+body{font-family:var(--font-body);color:var(--silver);background:var(--obsidian-deep);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* ── UTILITY ────────────────────────────────────────────────── */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* ── NAVIGATION ─────────────────────────────────────────────── */
+.nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,4vw,60px);transition:background 0.4s var(--ease-out),backdrop-filter 0.4s,border-bottom-color 0.4s;border-bottom:1px solid transparent}
+.nav.scrolled{background:rgba(10,11,12,0.96);backdrop-filter:blur(16px);border-bottom-color:rgba(140,115,85,0.15)}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;user-select:none}
+.nav-logo-img{height:36px;width:auto;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.8))}
+.nav-wordmark{font-family:var(--font-display);font-size:24px;letter-spacing:3px;color:var(--bronze);text-transform:uppercase;line-height:1}
+.nav-actions{display:flex;align-items:center;gap:12px}
+.btn-login{font-family:var(--font-heading);font-size:13px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--silver-dim);text-decoration:none;padding:8px 20px;border:1px solid rgba(188,198,204,0.2);border-radius:4px;transition:all 0.25s;cursor:pointer}
+.btn-login:hover{color:var(--silver);border-color:rgba(188,198,204,0.4);background:rgba(188,198,204,0.06)}
+.btn-login:focus-visible{outline:2px solid var(--bronze);outline-offset:3px}
+.nav-link{font-family:var(--font-heading);font-size:13px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--silver-dim);text-decoration:none;padding:8px 16px;transition:color 0.25s}
+.nav-link:hover{color:var(--bronze)}
+.nav-link:focus-visible{outline:2px solid var(--bronze);outline-offset:3px}
+.nav-link.active{color:var(--bronze)}
+
+/* ── BUTTONS ─────────────────────────────────────────────────── */
+.btn-gold{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--font-heading);font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--obsidian-deep);background:var(--bronze);border:none;border-radius:4px;padding:16px 40px;cursor:pointer;transition:transform 0.25s var(--ease-out),box-shadow 0.25s,background 0.2s;box-shadow:0 4px 20px rgba(140,115,85,0.3);text-decoration:none;white-space:nowrap;-webkit-appearance:none}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(140,115,85,0.45);background:var(--bronze-light)}
+.btn-gold:active{transform:translateY(-1px)}
+.btn-gold:focus-visible{outline:2px solid var(--sulfur);outline-offset:3px}
+
+/* ── SECTION BASE ────────────────────────────────────────────── */
+section{position:relative}
+.section-inner{max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,80px)}
+.section-eyebrow{font-family:var(--font-heading);font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--bronze);margin-bottom:16px;display:block}
+
+/* ── SCROLL ANIMATIONS ───────────────────────────────────────── */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity 0.8s var(--ease-out),transform 0.8s var(--ease-out)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:0.1s}
+.reveal-delay-2{transition-delay:0.2s}
+.reveal-delay-3{transition-delay:0.3s}
+
+/* ── ABOUT HERO ──────────────────────────────────────────────── */
+.about-hero{height:100vh;min-height:600px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.about-hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;will-change:transform}
+.about-hero-overlay{position:absolute;inset:0;background:rgba(18,20,21,0.55);z-index:1}
+.about-hero-content{position:relative;z-index:2;padding:0 clamp(20px,5vw,80px);max-width:800px}
+.about-hero-label{font-family:var(--font-heading);font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--bronze);display:block;margin-bottom:24px;animation:heroFade 1.4s 0.2s var(--ease-out) both}
+.about-hero-heading{font-family:var(--font-display);font-size:clamp(52px,9vw,110px);color:var(--silver);letter-spacing:2px;line-height:0.95;text-transform:uppercase;margin-bottom:20px;animation:heroFade 1.4s 0.35s var(--ease-out) both}
+.about-hero-sub{font-family:var(--font-body);font-size:clamp(15px,1.8vw,20px);font-weight:300;color:var(--silver-dim);animation:heroFade 1.4s 0.5s var(--ease-out) both}
+@keyframes heroFade{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── THE NAME SECTION ────────────────────────────────────────── */
+.about-name{background:var(--obsidian);padding:clamp(80px,12vh,140px) 0}
+.about-name-inner{max-width:760px;margin:0 auto;padding:0 clamp(20px,5vw,80px);text-align:center}
+.about-name-raven{height:48px;width:auto;margin:0 auto 32px;display:block;filter:drop-shadow(0 4px 16px rgba(0,0,0,0.9));opacity:0.75}
+.about-name-heading{font-family:var(--font-display);font-size:clamp(40px,6vw,68px);color:var(--silver);letter-spacing:2px;margin-bottom:40px;text-transform:uppercase;line-height:1}
+.about-name-body{font-family:var(--font-body);font-size:clamp(15px,1.6vw,18px);font-weight:300;color:var(--silver-dim);line-height:1.9;text-align:left}
+.about-name-body p{margin-bottom:24px}
+.about-name-body p:last-child{margin-bottom:0}
+
+/* ── FOUNDER SECTION ─────────────────────────────────────────── */
+.about-founder{background:var(--obsidian-deep);padding:clamp(80px,12vh,140px) 0}
+.about-founder-inner{max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,80px);display:grid;grid-template-columns:1fr 1fr;gap:clamp(48px,6vw,80px);align-items:center}
+.about-founder-img{overflow:hidden;border-radius:2px;position:relative}
+.about-founder-img img{width:100%;height:100%;object-fit:cover;display:block;max-height:640px;border-radius:2px}
+.about-founder-heading{font-family:var(--font-display);font-size:clamp(36px,4vw,58px);color:var(--silver);letter-spacing:2px;line-height:1;text-transform:uppercase;margin-bottom:clamp(24px,4vh,36px)}
+.about-founder-body{font-family:var(--font-body);font-size:clamp(15px,1.6vw,17px);font-weight:300;color:var(--silver-dim);line-height:1.9}
+.about-founder-body p{margin-bottom:20px}
+.about-founder-body p:last-child{margin-bottom:0}
+
+/* ── MISSION SECTION ─────────────────────────────────────────── */
+.about-mission{height:clamp(520px,68vh,780px);display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.about-mission-bg{position:absolute;inset:0;background-size:cover;background-position:center;will-change:transform}
+.about-mission-overlay{position:absolute;inset:0;background:rgba(18,20,21,0.6);z-index:1}
+.about-mission-content{position:relative;z-index:2;padding:0 clamp(20px,5vw,80px);max-width:760px}
+.about-mission-heading{font-family:var(--font-display);font-size:clamp(42px,7vw,80px);color:var(--silver);letter-spacing:2px;line-height:1;text-transform:uppercase;margin-bottom:clamp(20px,3vh,32px)}
+.about-mission-body{font-family:var(--font-body);font-size:clamp(15px,1.8vw,18px);font-weight:300;color:var(--silver-dim);line-height:1.9;max-width:580px;margin:0 auto clamp(32px,5vh,48px)}
+
+/* ── FOOTER ──────────────────────────────────────────────────── */
+.footer{background:var(--obsidian-deep);border-top:1px solid rgba(140,115,85,0.1);padding:clamp(32px,5vh,52px) 0}
+.footer-inner{max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,80px);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.footer-brand{display:flex;align-items:center;gap:10px}
+.footer-raven{height:28px;width:auto;opacity:0.75}
+.footer-wordmark{font-family:var(--font-display);font-size:18px;letter-spacing:3px;color:var(--bronze);opacity:0.75}
+.footer-copy{font-family:var(--font-body);font-size:12px;font-weight:300;color:var(--tungsten);letter-spacing:0.5px}
+.footer-right{display:flex;align-items:center;gap:24px}
+.footer-domain{font-family:var(--font-heading);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--tungsten);opacity:0.6}
+.footer-nav-link{font-family:var(--font-heading);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--tungsten);opacity:0.6;text-decoration:none;transition:color 0.25s,opacity 0.25s}
+.footer-nav-link:hover{color:var(--bronze);opacity:1}
+
+/* ── REDUCED MOTION ──────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important}
+  html{scroll-behavior:auto}
+  .about-hero-bg,.about-mission-bg{will-change:auto}
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────────────── */
+@media (max-width:768px){
+  .about-founder-inner{grid-template-columns:1fr}
+  .about-founder-img img{max-height:400px}
+  .footer-inner{flex-direction:column;align-items:center;text-align:center;gap:12px}
+  .footer-right{flex-direction:column;gap:12px}
+  .nav-wordmark{font-size:20px;letter-spacing:2px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="nav" id="mainNav" aria-label="Main navigation">
+  <a href="/" class="nav-logo" aria-label="Huginn — Home">
+    <img src="/HuginnRaven.png" alt="Huginn raven logo" class="nav-logo-img" width="36" height="36"/>
+    <span class="nav-wordmark">Huginn</span>
+  </a>
+  <div class="nav-actions">
+    <a href="/about" class="nav-link active">About</a>
+    <a href="https://cooley-lake-tracker.vercel.app" class="btn-login" target="_blank" rel="noopener" aria-label="Log in to Huginn app">Login</a>
+  </div>
+</nav>
+
+<!-- SECTION 1: HERO -->
+<section class="about-hero" id="hero" aria-label="About hero">
+  <div class="about-hero-bg" id="heroBg" style="background-image:url('/images/aboutone.JPG')" role="img" aria-label="Hunter with harvested whitetail buck outdoors"></div>
+  <div class="about-hero-overlay" aria-hidden="true"></div>
+  <div class="about-hero-content">
+    <span class="about-hero-label">Our Story</span>
+    <h1 class="about-hero-heading">Built From the<br/>Field Up.</h1>
+    <p class="about-hero-sub">The story behind Huginn</p>
+  </div>
+</section>
+
+<!-- SECTION 2: THE NAME -->
+<section class="about-name" id="name" aria-labelledby="nameHeading">
+  <div class="about-name-inner">
+    <img src="/HuginnRaven.png" alt="" class="about-name-raven reveal" aria-hidden="true" width="48" height="48"/>
+    <span class="section-eyebrow reveal">The Name</span>
+    <h2 class="about-name-heading reveal reveal-delay-1" id="nameHeading">What is Huginn?</h2>
+    <div class="about-name-body reveal reveal-delay-2">
+      <p>Huginn (pronounced HOO-gin) comes from Norse mythology. In the old stories, Odin — the Allfather — kept two ravens who flew across the world each day and returned to whisper what they had seen. One was Huginn, whose name means <em>Thought</em>. The other was Muninn — <em>Memory</em>.</p>
+      <p>Every morning they left. Every evening they returned with intelligence.</p>
+      <p>That is exactly what this platform is built to do. Fly across your property. Gather everything. Come back smarter.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: THE FOUNDER STORY -->
+<section class="about-founder" id="founder" aria-labelledby="founderHeading">
+  <div class="about-founder-inner">
+    <div class="about-founder-img reveal">
+      <img src="/images/abouttwo.jpg" alt="Hunter kneeling with harvested whitetail at night" width="600" height="640"/>
+    </div>
+    <div class="about-founder-text">
+      <span class="section-eyebrow reveal">Why We Built This</span>
+      <h2 class="about-founder-heading reveal reveal-delay-1" id="founderHeading">A hunter with<br/>a problem.</h2>
+      <div class="about-founder-body reveal reveal-delay-2">
+        <p>I am a hunter, a father, and a builder. I have spent years chasing whitetail across the Midwest — logging observations in notebooks, pulling cards from trail cameras, and trying to connect the dots in my head between all the data I was collecting.</p>
+        <p>There had to be a better way.</p>
+        <p>I wanted a platform that treated hunting like the intelligent, data-driven pursuit it actually is. Something that remembered everything, found the patterns I was missing, and helped me make smarter decisions in the stand. I looked around and nothing existed that did what I needed.</p>
+        <p>So I built it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: THE MISSION -->
+<section class="about-mission" id="mission" aria-labelledby="missionHeading">
+  <div class="about-mission-bg" id="missionBg" style="background-image:url('/images/hunters.jpg')" role="img" aria-label="Three hunters walking into an alpine meadow"></div>
+  <div class="about-mission-overlay" aria-hidden="true"></div>
+  <div class="about-mission-content">
+    <span class="section-eyebrow reveal">The Mission</span>
+    <h2 class="about-mission-heading reveal reveal-delay-1" id="missionHeading">Intel for every<br/>hunter.</h2>
+    <p class="about-mission-body reveal reveal-delay-2">Huginn is built for the hunter who takes it seriously. Who scouts in the off-season. Who watches patterns. Who wants to know more and hunt smarter. Whether you run one camera or twenty, hunt one property or several — Huginn turns your data into your edge.</p>
+    <a href="/#waitlist" class="btn-gold reveal reveal-delay-3">Join the Waitlist</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" aria-label="Site footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="/HuginnRaven.png" alt="Huginn" class="footer-raven" width="28" height="28"/>
+      <span class="footer-wordmark">Huginn</span>
+    </div>
+    <p class="footer-copy">&copy; 2026 Huginn Advisory Group</p>
+    <div class="footer-right">
+      <a href="/" class="footer-nav-link">Home</a>
+      <span class="footer-domain">huginnhunt.com</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── NAV SCROLL BEHAVIOR ───────────────────────────────────────
+const mainNav = document.getElementById('mainNav');
+function handleNavScroll() {
+  mainNav.classList.toggle('scrolled', window.scrollY > 60);
+}
+window.addEventListener('scroll', handleNavScroll, { passive: true });
+handleNavScroll();
+
+// ── PARALLAX ─────────────────────────────────────────────────
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const heroBg = document.getElementById('heroBg');
+const missionBg = document.getElementById('missionBg');
+
+function applyParallax(el, scrollY, offset, factor) {
+  if(!el || prefersReducedMotion) return;
+  const rect = el.parentElement.getBoundingClientRect();
+  if(rect.bottom < 0 || rect.top > window.innerHeight) return;
+  const progress = (scrollY - offset) * factor;
+  el.style.transform = `translateY(${progress}px)`;
+}
+
+let ticking = false;
+let lastScrollY = 0;
+window.addEventListener('scroll', () => {
+  lastScrollY = window.scrollY;
+  if(!ticking) {
+    requestAnimationFrame(() => {
+      applyParallax(heroBg, lastScrollY, 0, 0.35);
+      const missionEl = document.getElementById('mission');
+      if(missionEl) applyParallax(missionBg, lastScrollY, missionEl.offsetTop, 0.2);
+      ticking = false;
+    });
+    ticking = true;
+  }
+}, { passive: true });
+
+// ── SCROLL REVEAL ─────────────────────────────────────────────
+if(!prefersReducedMotion) {
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(el => observer.observe(el));
+} else {
+  document.querySelectorAll('.reveal').forEach(el => {
+    el.classList.add('visible');
+  });
+}
+</script>
+</body>
+</html>
