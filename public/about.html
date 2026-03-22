@@ -92,13 +92,6 @@ section{position:relative}
 .about-name-body p:last-child{margin-bottom:0}
 .about-name-divider{width:60px;height:1px;background:rgba(140,115,85,0.3);margin:48px auto;border:none}
 
-/* ── BUILT BY HUNTERS SECTION ───────────────────────────────── */
-.about-field{position:relative;height:clamp(480px,60vh,700px);display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
-.about-field-bg{position:absolute;inset:0;background-size:cover;background-position:center;will-change:transform}
-.about-field-overlay{position:absolute;inset:0;background:rgba(18,20,21,0.55);z-index:1}
-.about-field-content{position:relative;z-index:2;text-align:center;padding:0 clamp(20px,5vw,80px);max-width:780px}
-.about-field-heading{font-family:var(--font-display);font-size:clamp(36px,7vw,80px);color:var(--silver);letter-spacing:2px;line-height:1;text-transform:uppercase;margin-bottom:0}
-
 /* ── FOUNDER SECTION ─────────────────────────────────────────── */
 .about-founder{background:var(--obsidian-deep);padding:clamp(80px,12vh,140px) 0}
 .about-founder-inner{max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,80px);display:grid;grid-template-columns:1fr 1fr;gap:clamp(48px,6vw,80px);align-items:center}
@@ -108,6 +101,13 @@ section{position:relative}
 .about-founder-body{font-family:var(--font-body);font-size:clamp(15px,1.6vw,17px);font-weight:300;color:var(--silver-dim);line-height:1.9}
 .about-founder-body p{margin-bottom:20px}
 .about-founder-body p:last-child{margin-bottom:0}
+
+/* ── BUILT BY HUNTERS SECTION ───────────────────────────────── */
+.about-field{position:relative;height:clamp(480px,60vh,700px);display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.about-field-bg{position:absolute;inset:0;background-size:cover;background-position:center;will-change:transform}
+.about-field-overlay{position:absolute;inset:0;background:rgba(18,20,21,0.55);z-index:1}
+.about-field-content{position:relative;z-index:2;text-align:center;padding:0 clamp(20px,5vw,80px);max-width:780px}
+.about-field-heading{font-family:var(--font-display);font-size:clamp(36px,7vw,80px);color:var(--silver);letter-spacing:2px;line-height:1;text-transform:uppercase;margin-bottom:0}
 
 /* ── MISSION SECTION ─────────────────────────────────────────── */
 .about-mission{position:relative;height:clamp(520px,68vh,780px);display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
@@ -162,7 +162,7 @@ section{position:relative}
 
 <!-- SECTION 1: HERO -->
 <section class="about-hero" id="hero" aria-label="About hero">
-  <div class="about-hero-bg" id="heroBg" style="background-image:url('/images/aboutone.JPG')" role="img" aria-label="Hunter with harvested whitetail buck outdoors"></div>
+  <div class="about-hero-bg" id="heroBg" style="background-image:url('/images/aboutone.JPG');background-size:cover;background-position:center;" role="img" aria-label="Hunter with harvested whitetail buck outdoors"></div>
   <div class="about-hero-overlay" aria-hidden="true"></div>
   <div class="about-hero-content">
     <span class="about-hero-label">Our Story</span>
@@ -187,7 +187,7 @@ section{position:relative}
 
 <!-- SECTION 3: BUILT BY HUNTERS -->
 <section class="about-field" id="builtby" aria-labelledby="builtbyHeading">
-  <div class="about-field-bg" id="fieldBg" style="background-image:url('/images/sunset.jpg')" role="img" aria-label="Hunter at golden hour in the field"></div>
+  <div class="about-field-bg" id="fieldBg" style="background-image:url('/images/sunset.jpg');background-size:cover;background-position:center;" role="img" aria-label="Hunter at golden hour in the field"></div>
   <div class="about-field-overlay" aria-hidden="true"></div>
   <div class="about-field-content">
     <span class="section-eyebrow reveal">Built by Hunters</span>
@@ -199,7 +199,7 @@ section{position:relative}
 <section class="about-founder" id="founder" aria-labelledby="founderHeading">
   <div class="about-founder-inner">
     <div class="about-founder-img reveal">
-      <img src="/images/abouttwo.jpg" alt="Hunter kneeling with harvested whitetail at night" width="600" height="640"/>
+      <img src="/images/abouttwo.jpg" alt="Hunter kneeling with harvested whitetail at night" style="width:100%;height:100%;object-fit:cover;" width="600" height="640"/>
     </div>
     <div class="about-founder-text">
       <span class="section-eyebrow reveal">Why We Built This</span>
@@ -216,7 +216,7 @@ section{position:relative}
 
 <!-- SECTION 5: THE MISSION -->
 <section class="about-mission" id="mission" aria-labelledby="missionHeading">
-  <div class="about-mission-bg" id="missionBg" style="background-image:url('/images/hunters.jpg')" role="img" aria-label="Three hunters walking into an alpine meadow"></div>
+  <div class="about-mission-bg" id="missionBg" style="background-image:url('/images/hunters.jpg');background-size:cover;background-position:center;" role="img" aria-label="Three hunters walking into an alpine meadow"></div>
   <div class="about-mission-overlay" aria-hidden="true"></div>
   <div class="about-mission-content">
     <span class="section-eyebrow reveal">The Mission</span>
