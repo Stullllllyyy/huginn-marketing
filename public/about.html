@@ -7,7 +7,7 @@
 <meta name="description" content="The story behind Huginn — built by a hunter who needed a better way to turn trail camera data into hunt intelligence."/>
 <meta property="og:title" content="About — Huginn"/>
 <meta property="og:description" content="Built from the field up. The story behind Huginn."/>
-<meta property="og:image" content="/images/aboutone.JPG"/>
+<meta property="og:image" content="/images/aboutone.jpg"/>
 <link rel="icon" href="/images/huginnhgold.png" type="image/png"/>
 <link rel="apple-touch-icon" href="/images/huginnhgold.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -162,7 +162,7 @@ section{position:relative}
 
 <!-- SECTION 1: HERO -->
 <section class="about-hero" id="hero" aria-label="About hero">
-  <div class="about-hero-bg" id="heroBg" style="background-image:url('/images/aboutone.JPG');background-size:cover;background-position:center;" role="img" aria-label="Hunter with harvested whitetail buck outdoors"></div>
+  <div class="about-hero-bg" id="heroBg" role="img" aria-label="Hunter with harvested whitetail buck outdoors"></div>
   <div class="about-hero-overlay" aria-hidden="true"></div>
   <div class="about-hero-content">
     <span class="about-hero-label">Our Story</span>
@@ -242,6 +242,16 @@ section{position:relative}
 </footer>
 
 <script>
+// ── HERO BACKGROUND (JS-applied for case-safe path) ───────────
+document.addEventListener('DOMContentLoaded', function() {
+  const heroBgEl = document.getElementById('heroBg');
+  if(heroBgEl) {
+    heroBgEl.style.backgroundImage = "url('/images/aboutone.jpg')";
+    heroBgEl.style.backgroundSize = 'cover';
+    heroBgEl.style.backgroundPosition = 'center';
+  }
+});
+
 // ── NAV SCROLL BEHAVIOR ───────────────────────────────────────
 const mainNav = document.getElementById('mainNav');
 function handleNavScroll() {
