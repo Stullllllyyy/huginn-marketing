@@ -13,6 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Raleway:wght@300;400;500;600;700&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
 /* ── RESET & TOKENS ─────────────────────────────────────────── */
@@ -227,7 +228,7 @@ section{position:relative}
     <span class="section-eyebrow reveal">The Mission</span>
     <h2 class="about-mission-heading reveal reveal-delay-1" id="missionHeading">Intel for every<br/>hunter.</h2>
     <p class="about-mission-body reveal reveal-delay-2">Huginn is built for the hunter who takes it seriously. Who scouts in the off-season. Who watches patterns. Who wants to know more and hunt smarter. Whether you run one camera or twenty, hunt one property or several — Huginn turns your data into your edge.</p>
-    <a href="/#waitlist" class="btn-gold reveal reveal-delay-3">Join the Waitlist</a>
+    <button class="btn-gold reveal reveal-delay-3" onclick="openWaitlistModal()">Join the Waitlist</button>
   </div>
 </section>
 
@@ -314,6 +315,97 @@ if(!prefersReducedMotion) {
     el.classList.add('visible');
   });
 }
+</script>
+
+<!-- WAITLIST MODAL -->
+<div id="waitlistModal" style="display:none;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;background:rgba(0,0,0,0.7);backdrop-filter:blur(8px)">
+  <div style="background:var(--obsidian-mid);border:1px solid rgba(140,115,85,0.25);border-radius:6px;padding:clamp(32px,5vw,48px);max-width:440px;width:90%;position:relative;text-align:center">
+    <button onclick="closeWaitlistModal()" style="position:absolute;top:14px;right:14px;background:none;border:none;color:var(--silver-dim);font-size:22px;cursor:pointer;line-height:1;padding:4px" aria-label="Close modal">&times;</button>
+    <img src="/images/huginnhgold.png" alt="Huginn" style="height:40px;width:auto;margin:0 auto 20px;display:block;filter:drop-shadow(0 4px 16px rgba(0,0,0,0.9))"/>
+    <h3 style="font-family:var(--font-display);font-size:clamp(28px,5vw,40px);color:var(--silver);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px">Join the Waitlist</h3>
+    <p style="font-family:var(--font-body);font-size:15px;font-weight:300;color:var(--silver-dim);line-height:1.7;margin-bottom:28px">Enter your email and we'll reach out when your spot is ready.</p>
+    <form id="modalWaitlistForm" onsubmit="handleWaitlistSubmit(event)" novalidate style="display:flex;flex-direction:column;gap:12px">
+      <label for="modalWaitlistEmail" class="sr-only">Email address</label>
+      <input type="email" id="modalWaitlistEmail" placeholder="your@email.com" autocomplete="email" required style="font-family:var(--font-body);font-size:15px;color:var(--silver);background:rgba(26,28,30,0.8);border:1px solid rgba(140,115,85,0.25);border-radius:4px;padding:16px 20px;outline:none;transition:border-color 0.25s;-webkit-appearance:none"/>
+      <button type="submit" class="btn-gold" id="modalWaitlistSubmit" style="width:100%">Join the Waitlist</button>
+    </form>
+    <div id="modalWaitlistStatus" role="status" aria-live="polite" style="margin-top:14px;font-family:var(--font-heading);font-size:13px;letter-spacing:1px;min-height:20px"></div>
+    <p style="margin-top:16px;font-family:var(--font-body);font-size:12px;font-weight:300;color:var(--tungsten);letter-spacing:0.5px">No spam. We hate it as much as you do.</p>
+  </div>
+</div>
+
+<script>
+const SUPA_URL = 'https://drzmfoaspnahzbrrmnrv.supabase.co';
+const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRyem1mb2FzcG5haHpicnJtbnJ2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMwNzQ0NzMsImV4cCI6MjA4ODY1MDQ3M30.-2nFoPIqeutHMKFWEJUvILZ54mq2h-RR1PlC7yxm-x8';
+const sb = supabase.createClient(SUPA_URL, SUPA_KEY);
+
+function openWaitlistModal() {
+  const modal = document.getElementById('waitlistModal');
+  modal.style.display = 'flex';
+  document.getElementById('modalWaitlistEmail').focus();
+}
+
+function closeWaitlistModal() {
+  const modal = document.getElementById('waitlistModal');
+  modal.style.display = 'none';
+  document.getElementById('modalWaitlistForm').reset();
+  document.getElementById('modalWaitlistStatus').textContent = '';
+  document.getElementById('modalWaitlistStatus').className = '';
+  const btn = document.getElementById('modalWaitlistSubmit');
+  btn.disabled = false;
+  btn.textContent = 'Join the Waitlist';
+}
+
+async function handleWaitlistSubmit(e) {
+  e.preventDefault();
+  const emailInput = document.getElementById('modalWaitlistEmail');
+  const statusEl = document.getElementById('modalWaitlistStatus');
+  const submitBtn = document.getElementById('modalWaitlistSubmit');
+  const email = emailInput.value.trim().toLowerCase();
+
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    statusEl.textContent = 'Please enter a valid email address.';
+    statusEl.style.color = '#e87a7a';
+    return;
+  }
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Joining...';
+  statusEl.textContent = '';
+
+  try {
+    const { error } = await sb.from('waitlist').insert({ email });
+
+    if (error) {
+      if (error.code === '23505' || (error.message && error.message.includes('unique'))) {
+        statusEl.textContent = "You're already on the list.";
+        statusEl.style.color = 'var(--silver-dim)';
+      } else {
+        console.error('Waitlist error:', error);
+        statusEl.textContent = 'Something went wrong. Try again.';
+        statusEl.style.color = '#e87a7a';
+      }
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Join the Waitlist';
+      return;
+    }
+
+    statusEl.textContent = "You're on the list. We'll be in touch.";
+    statusEl.style.color = 'var(--sulfur)';
+    emailInput.value = '';
+    submitBtn.textContent = "You're In";
+  } catch (err) {
+    console.error('Waitlist exception:', err);
+    statusEl.textContent = 'Something went wrong. Try again.';
+    statusEl.style.color = '#e87a7a';
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Join the Waitlist';
+  }
+}
+
+document.getElementById('waitlistModal').addEventListener('click', function(e) {
+  if (e.target === this) closeWaitlistModal();
+});
 </script>
 </body>
 </html>
