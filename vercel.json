@@ -1,7 +1,8 @@
 {
   "outputDirectory": "public",
-  "routes": [
-    { "src": "/about", "dest": "/about.html" },
-    { "src": "/", "dest": "/index.html" }
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/about", "destination": "/about.html" },
+    { "source": "/(.*)", "destination": "/$1.html" }
   ]
 }
