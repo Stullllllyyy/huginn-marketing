@@ -73,7 +73,7 @@ section{position:relative}
 .reveal-delay-3{transition-delay:0.3s}
 
 /* ── ABOUT HERO ──────────────────────────────────────────────── */
-.about-hero{height:100vh;min-height:600px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.about-hero{position:relative;height:100vh;min-height:600px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
 .about-hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;will-change:transform}
 .about-hero-overlay{position:absolute;inset:0;background:rgba(18,20,21,0.55);z-index:1}
 .about-hero-content{position:relative;z-index:2;padding:0 clamp(20px,5vw,80px);max-width:800px}
@@ -92,6 +92,13 @@ section{position:relative}
 .about-name-body p:last-child{margin-bottom:0}
 .about-name-divider{width:60px;height:1px;background:rgba(140,115,85,0.3);margin:48px auto;border:none}
 
+/* ── BUILT BY HUNTERS SECTION ───────────────────────────────── */
+.about-field{position:relative;height:clamp(480px,60vh,700px);display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.about-field-bg{position:absolute;inset:0;background-size:cover;background-position:center;will-change:transform}
+.about-field-overlay{position:absolute;inset:0;background:rgba(18,20,21,0.55);z-index:1}
+.about-field-content{position:relative;z-index:2;text-align:center;padding:0 clamp(20px,5vw,80px);max-width:780px}
+.about-field-heading{font-family:var(--font-display);font-size:clamp(36px,7vw,80px);color:var(--silver);letter-spacing:2px;line-height:1;text-transform:uppercase;margin-bottom:0}
+
 /* ── FOUNDER SECTION ─────────────────────────────────────────── */
 .about-founder{background:var(--obsidian-deep);padding:clamp(80px,12vh,140px) 0}
 .about-founder-inner{max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,80px);display:grid;grid-template-columns:1fr 1fr;gap:clamp(48px,6vw,80px);align-items:center}
@@ -103,7 +110,7 @@ section{position:relative}
 .about-founder-body p:last-child{margin-bottom:0}
 
 /* ── MISSION SECTION ─────────────────────────────────────────── */
-.about-mission{height:clamp(520px,68vh,780px);display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.about-mission{position:relative;height:clamp(520px,68vh,780px);display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
 .about-mission-bg{position:absolute;inset:0;background-size:cover;background-position:center;will-change:transform}
 .about-mission-overlay{position:absolute;inset:0;background:rgba(18,20,21,0.6);z-index:1}
 .about-mission-content{position:relative;z-index:2;padding:0 clamp(20px,5vw,80px);max-width:760px}
@@ -126,7 +133,7 @@ section{position:relative}
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important}
   html{scroll-behavior:auto}
-  .about-hero-bg,.about-mission-bg{will-change:auto}
+  .about-hero-bg,.about-field-bg,.about-mission-bg{will-change:auto}
 }
 
 /* ── RESPONSIVE ──────────────────────────────────────────────── */
@@ -178,7 +185,17 @@ section{position:relative}
   </div>
 </section>
 
-<!-- SECTION 3: THE FOUNDER STORY -->
+<!-- SECTION 3: BUILT BY HUNTERS -->
+<section class="about-field" id="builtby" aria-labelledby="builtbyHeading">
+  <div class="about-field-bg" id="fieldBg" style="background-image:url('/images/sunset.jpg')" role="img" aria-label="Hunter at golden hour in the field"></div>
+  <div class="about-field-overlay" aria-hidden="true"></div>
+  <div class="about-field-content">
+    <span class="section-eyebrow reveal">Built by Hunters</span>
+    <h2 class="about-field-heading reveal reveal-delay-1" id="builtbyHeading">Built by hunters.<br/>For hunters.</h2>
+  </div>
+</section>
+
+<!-- SECTION 4: THE FOUNDER STORY -->
 <section class="about-founder" id="founder" aria-labelledby="founderHeading">
   <div class="about-founder-inner">
     <div class="about-founder-img reveal">
@@ -197,7 +214,7 @@ section{position:relative}
   </div>
 </section>
 
-<!-- SECTION 4: THE MISSION -->
+<!-- SECTION 5: THE MISSION -->
 <section class="about-mission" id="mission" aria-labelledby="missionHeading">
   <div class="about-mission-bg" id="missionBg" style="background-image:url('/images/hunters.jpg')" role="img" aria-label="Three hunters walking into an alpine meadow"></div>
   <div class="about-mission-overlay" aria-hidden="true"></div>
@@ -237,6 +254,7 @@ handleNavScroll();
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 const heroBg = document.getElementById('heroBg');
+const fieldBg = document.getElementById('fieldBg');
 const missionBg = document.getElementById('missionBg');
 
 function applyParallax(el, scrollY, offset, factor) {
@@ -254,7 +272,9 @@ window.addEventListener('scroll', () => {
   if(!ticking) {
     requestAnimationFrame(() => {
       applyParallax(heroBg, lastScrollY, 0, 0.35);
+      const builtbyEl = document.getElementById('builtby');
       const missionEl = document.getElementById('mission');
+      if(builtbyEl) applyParallax(fieldBg, lastScrollY, builtbyEl.offsetTop, 0.2);
       if(missionEl) applyParallax(missionBg, lastScrollY, missionEl.offsetTop, 0.2);
       ticking = false;
     });
