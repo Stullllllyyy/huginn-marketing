@@ -7,9 +7,9 @@
 <meta name="description" content="The story behind Huginn — built by a hunter who needed a better way to turn trail camera data into hunt intelligence."/>
 <meta property="og:title" content="About — Huginn"/>
 <meta property="og:description" content="Built from the field up. The story behind Huginn."/>
-<meta property="og:image" content="/images/aboutone.jpg"/>
-<link rel="icon" href="/images/huginnhgold.png" type="image/png"/>
-<link rel="apple-touch-icon" href="/images/huginnhgold.png"/>
+<meta property="og:image" content="aboutone.jpg"/>
+<link rel="icon" href="huginnhgold.png" type="image/png"/>
+<link rel="apple-touch-icon" href="huginnhgold.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Raleway:wght@300;400;500;600;700&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet"/>
@@ -148,13 +148,10 @@ section{position:relative}
 </head>
 <body>
 
-<!-- DEBUG: path test — remove once images confirmed working -->
-
-
 <!-- NAVIGATION -->
 <nav class="nav" id="mainNav" aria-label="Main navigation">
   <a href="/" class="nav-logo" aria-label="Huginn — Home">
-    <img src="/images/huginnhgold.png" alt="Huginn logo" class="nav-logo-img" width="38" height="38"/>
+    <img src="huginnhgold.png" alt="Huginn logo" class="nav-logo-img" width="38" height="38"/>
     <span class="nav-wordmark">Huginn</span>
   </a>
   <div class="nav-actions">
@@ -175,9 +172,9 @@ section{position:relative}
 </section>
 
 <!-- SECTION 2: THE NAME -->
-<section class="about-name" id="name" aria-labelledby="nameHeading">
+<section class="about-name" id="name" aria-labelledby="nameHeading" style="background-image: url('/images/whatishuginn.jpg'); background-size: cover; background-position: center;">
   <div class="about-name-inner">
-    <img src="/images/huginnhgold.png" alt="" class="about-name-raven reveal" aria-hidden="true" width="48" height="48"/>
+    <img src="huginnhgold.png" alt="" class="about-name-raven reveal" aria-hidden="true" width="48" height="48"/>
     <span class="section-eyebrow reveal">The Name</span>
     <h2 class="about-name-heading reveal reveal-delay-1" id="nameHeading">What is Huginn?</h2>
     <div class="about-name-body reveal reveal-delay-2">
@@ -190,7 +187,7 @@ section{position:relative}
 
 <!-- SECTION 3: BUILT BY HUNTERS -->
 <section class="about-field" id="builtby" aria-labelledby="builtbyHeading">
-  <div class="about-field-bg" id="fieldBg" style="background-image:url('/images/sunset.jpg');background-size:cover;background-position:center;" role="img" aria-label="Hunter at golden hour in the field"></div>
+  <div class="about-field-bg" id="fieldBg" style="background-image:url('sunset.jpg');background-size:cover;background-position:center;" role="img" aria-label="Hunter at golden hour in the field"></div>
   <div class="about-field-overlay" aria-hidden="true"></div>
   <div class="about-field-content">
     <span class="section-eyebrow reveal">Built by Hunters</span>
@@ -202,7 +199,7 @@ section{position:relative}
 <section class="about-founder" id="founder" aria-labelledby="founderHeading">
   <div class="about-founder-inner">
     <div class="about-founder-img reveal">
-      <img src="images/abouttwo.jpg" alt="Hunter kneeling with harvested whitetail at night" style="width:100%;height:100%;object-fit:cover;" width="600" height="640"/>
+      <img src="abouttwo.jpg" alt="Hunter kneeling with harvested whitetail at night" style="width:100%; height:600px; object-fit:cover; object-position:center top;" width="600" height="640"/>
     </div>
     <div class="about-founder-text">
       <span class="section-eyebrow reveal">Why We Built This</span>
@@ -219,7 +216,7 @@ section{position:relative}
 
 <!-- SECTION 5: THE MISSION -->
 <section class="about-mission" id="mission" aria-labelledby="missionHeading">
-  <div class="about-mission-bg" id="missionBg" style="background-image:url('/images/hunters.jpg');background-size:cover;background-position:center;" role="img" aria-label="Three hunters walking into an alpine meadow"></div>
+  <div class="about-mission-bg" id="missionBg" style="background-image:url('hunters.jpg');background-size:cover;background-position:center;" role="img" aria-label="Three hunters walking into an alpine meadow"></div>
   <div class="about-mission-overlay" aria-hidden="true"></div>
   <div class="about-mission-content">
     <span class="section-eyebrow reveal">The Mission</span>
@@ -233,7 +230,7 @@ section{position:relative}
 <footer class="footer" aria-label="Site footer">
   <div class="footer-inner">
     <div class="footer-brand">
-      <img src="/images/huginnhgold.png" alt="Huginn" class="footer-raven" width="28" height="28"/>
+      <img src="huginnhgold.png" alt="Huginn" class="footer-raven" width="28" height="28"/>
       <span class="footer-wordmark">Huginn</span>
     </div>
     <p class="footer-copy">&copy; 2026 Huginn Advisory Group</p>
@@ -245,13 +242,13 @@ section{position:relative}
 </footer>
 
 <script>
-// ── HERO BACKGROUND (JS-applied for case-safe path) ───────────
+// ── HERO BACKGROUND ───────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', function() {
   const heroBgEl = document.getElementById('heroBg');
   if(heroBgEl) {
-    heroBgEl.style.backgroundImage = "url('/images/aboutone.jpg')";
+    heroBgEl.style.backgroundImage = "url('aboutone.jpg')";
     heroBgEl.style.backgroundSize = 'cover';
-    heroBgEl.style.backgroundPosition = 'center';
+    heroBgEl.style.backgroundPosition = 'center 30%';
   }
 });
 
