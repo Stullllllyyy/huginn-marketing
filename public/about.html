@@ -13,6 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Raleway:wght@300;400;500;600;700&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
 /* ── RESET & TOKENS ─────────────────────────────────────────── */
@@ -131,6 +132,27 @@ section{position:relative}
 .footer-nav-link{font-family:var(--font-heading);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--tungsten);opacity:0.6;text-decoration:none;transition:color 0.25s,opacity 0.25s}
 .footer-nav-link:hover{color:var(--bronze);opacity:1}
 
+/* ── WAITLIST MODAL ──────────────────────────────────────────── */
+.modal-backdrop{position:fixed;inset:0;background:rgba(10,11,12,0.88);backdrop-filter:blur(8px);z-index:500;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity 0.3s var(--ease-out)}
+.modal-backdrop.open{opacity:1;pointer-events:all}
+.modal{background:var(--obsidian-mid);border:1px solid rgba(140,115,85,0.2);border-radius:4px;padding:clamp(36px,5vw,56px) clamp(28px,4vw,48px);max-width:480px;width:100%;text-align:center;position:relative;transform:translateY(24px);transition:transform 0.35s var(--ease-out);box-shadow:0 24px 80px rgba(0,0,0,0.7)}
+.modal-backdrop.open .modal{transform:translateY(0)}
+.modal-close{position:absolute;top:16px;right:20px;background:none;border:none;color:var(--tungsten);font-size:24px;cursor:pointer;line-height:1;padding:4px;transition:color 0.2s}
+.modal-close:hover{color:var(--silver)}
+.modal-raven{height:40px;width:auto;margin:0 auto 20px;display:block;opacity:0.8}
+.modal-title{font-family:var(--font-display);font-size:clamp(32px,5vw,48px);color:var(--silver);letter-spacing:2px;text-transform:uppercase;line-height:1;margin-bottom:12px}
+.modal-sub{font-family:var(--font-body);font-size:15px;font-weight:300;color:var(--silver-dim);line-height:1.7;margin-bottom:32px}
+.modal-form{display:flex;flex-direction:column;gap:0;width:100%}
+.modal-input{font-family:var(--font-body);font-size:15px;color:var(--silver);background:rgba(10,11,12,0.8);border:1px solid rgba(140,115,85,0.25);border-bottom:none;border-radius:4px 4px 0 0;padding:16px 20px;outline:none;transition:border-color 0.25s;-webkit-appearance:none}
+.modal-input::placeholder{color:var(--tungsten)}
+.modal-input:focus{border-color:var(--bronze)}
+.modal-form .btn-gold{border-radius:0 0 4px 4px;width:100%;padding:16px;font-size:14px}
+.modal-status{margin-top:16px;font-family:var(--font-heading);font-size:13px;letter-spacing:1px;min-height:20px;transition:opacity 0.3s}
+.modal-status.success{color:var(--sulfur)}
+.modal-status.error{color:#e87a7a}
+.modal-status.info{color:var(--silver-dim)}
+.modal-note{margin-top:16px;font-family:var(--font-body);font-size:12px;font-weight:300;color:var(--tungsten)}
+
 /* ── REDUCED MOTION ──────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important}
@@ -158,6 +180,23 @@ section{position:relative}
 </style>
 </head>
 <body>
+
+<!-- WAITLIST MODAL -->
+<div class="modal-backdrop" id="waitlistModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal">
+    <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+    <img src="/images/huginnhgold.png" alt="" class="modal-raven" width="40" height="40" aria-hidden="true"/>
+    <h2 class="modal-title" id="modalTitle">Join the Waitlist</h2>
+    <p class="modal-sub">Huginn is in private beta. Drop your email and we'll reach out when your spot is ready.</p>
+    <div class="modal-form">
+      <label for="modalEmail" class="sr-only">Email address</label>
+      <input type="email" id="modalEmail" class="modal-input" placeholder="your@email.com" autocomplete="email" required/>
+      <button type="button" class="btn-gold" id="modalSubmit">Join the Waitlist</button>
+    </div>
+    <div class="modal-status" id="modalStatus" role="status" aria-live="polite"></div>
+    <p class="modal-note">No spam. We hate it as much as you do.</p>
+  </div>
+</div>
 
 <!-- NAVIGATION -->
 <nav class="nav" id="mainNav" aria-label="Main navigation">
@@ -233,7 +272,7 @@ section{position:relative}
     <span class="section-eyebrow reveal">The Mission</span>
     <h2 class="about-mission-heading reveal reveal-delay-1" id="missionHeading">Intel for every<br/>hunter.</h2>
     <p class="about-mission-body reveal reveal-delay-2">Huginn is built for the hunter who takes it seriously. Who scouts in the off-season. Who watches patterns. Who wants to know more and hunt smarter. Whether you run one camera or twenty, hunt one property or several — Huginn turns your data into your edge.</p>
-    <a href="/#waitlist" class="btn-gold reveal reveal-delay-3">Join the Waitlist</a>
+    <button class="btn-gold reveal reveal-delay-3" id="openWaitlistModal">Join the Waitlist</button>
   </div>
 </section>
 
@@ -253,7 +292,80 @@ section{position:relative}
 </footer>
 
 <script>
-// ── HERO BACKGROUND (JS-applied for case-safe path) ───────────
+// ── SUPABASE ──────────────────────────────────────────────────
+const SUPA_URL = 'https://drzmfoaspnahzbrrmnrv.supabase.co';
+const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRyem1mb2FzcG5haHpicnJtbnJ2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMwNzQ0NzMsImV4cCI6MjA4ODY1MDQ3M30.-2nFoPIqeutHMKFWEJUvILZ54mq2h-RR1PlC7yxm-x8';
+const sb = supabase.createClient(SUPA_URL, SUPA_KEY);
+
+// ── MODAL ─────────────────────────────────────────────────────
+const modal = document.getElementById('waitlistModal');
+const modalClose = document.getElementById('modalClose');
+const openBtn = document.getElementById('openWaitlistModal');
+const modalSubmit = document.getElementById('modalSubmit');
+const modalStatus = document.getElementById('modalStatus');
+const modalEmail = document.getElementById('modalEmail');
+
+function openModal() {
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  setTimeout(() => modalEmail.focus(), 100);
+}
+
+function closeModal() {
+  modal.classList.remove('open');
+  document.body.style.overflow = '';
+  modalStatus.textContent = '';
+  modalStatus.className = 'modal-status';
+  modalEmail.value = '';
+  modalSubmit.disabled = false;
+  modalSubmit.textContent = 'Join the Waitlist';
+}
+
+openBtn.addEventListener('click', openModal);
+modalClose.addEventListener('click', closeModal);
+modal.addEventListener('click', function(e) {
+  if(e.target === modal) closeModal();
+});
+document.addEventListener('keydown', function(e) {
+  if(e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+});
+
+function setModalStatus(msg, type) {
+  modalStatus.textContent = msg;
+  modalStatus.className = 'modal-status ' + type;
+}
+
+modalSubmit.addEventListener('click', async function() {
+  const email = modalEmail.value.trim().toLowerCase();
+  if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    setModalStatus('Please enter a valid email address.', 'error');
+    return;
+  }
+  modalSubmit.disabled = true;
+  modalSubmit.textContent = 'Joining...';
+  setModalStatus('', '');
+  try {
+    const { error } = await sb.from('waitlist').insert({ email });
+    if(error) {
+      if(error.code === '23505' || (error.message && error.message.includes('unique'))) {
+        setModalStatus("You're already on the list.", 'info');
+      } else {
+        setModalStatus('Something went wrong. Try again.', 'error');
+        modalSubmit.disabled = false;
+        modalSubmit.textContent = 'Join the Waitlist';
+      }
+      return;
+    }
+    setModalStatus("You're on the list. We'll be in touch.", 'success');
+    modalSubmit.textContent = "You're In";
+  } catch(err) {
+    setModalStatus('Something went wrong. Try again.', 'error');
+    modalSubmit.disabled = false;
+    modalSubmit.textContent = 'Join the Waitlist';
+  }
+});
+
+// ── HERO BACKGROUND ───────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', function() {
   const heroBgEl = document.getElementById('heroBg');
   if(heroBgEl) {
@@ -272,7 +384,6 @@ handleNavScroll();
 
 // ── PARALLAX ─────────────────────────────────────────────────
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
 const heroBg = document.getElementById('heroBg');
 const fieldBg = document.getElementById('fieldBg');
 const missionBg = document.getElementById('missionBg');
