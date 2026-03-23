@@ -83,7 +83,8 @@ section{position:relative}
 @keyframes heroFade{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 
 /* ── THE NAME SECTION ────────────────────────────────────────── */
-.about-name{background:var(--obsidian);padding:clamp(80px,12vh,140px) 0}
+.about-name{background:var(--obsidian);padding:clamp(80px,12vh,140px) 0;min-height:600px}
+.about-name-bg{position:absolute;inset:0;background-image:url('/images/whatishugin.jpg');background-size:cover;background-position:center 15%}
 .about-name-inner{max-width:760px;margin:0 auto;padding:0 clamp(20px,5vw,80px);text-align:center}
 .about-name-raven{height:48px;width:auto;margin:0 auto 32px;display:block;filter:drop-shadow(0 4px 16px rgba(0,0,0,0.9));opacity:0.75}
 .about-name-heading{font-family:var(--font-display);font-size:clamp(40px,6vw,68px);color:var(--silver);letter-spacing:2px;margin-bottom:40px;text-transform:uppercase;line-height:1}
@@ -143,6 +144,7 @@ section{position:relative}
   .about-hero{min-height:500px}
   .about-hero-bg{background-position:70% center}
   .about-name{padding:clamp(60px,10vh,100px) 0}
+  .about-name-bg{background-position:center 20%}
   .about-field{height:clamp(360px,50vh,520px)}
   .about-mission{height:clamp(440px,60vh,640px)}
   .footer-inner{flex-direction:column;align-items:center;text-align:center;gap:12px}
@@ -182,7 +184,7 @@ section{position:relative}
 
 <!-- SECTION 2: THE NAME -->
 <section class="about-name" id="name" aria-labelledby="nameHeading" style="position:relative;overflow:hidden;">
-  <div style="position:absolute;inset:0;background-image:url('/images/whatishugin.jpg');background-size:cover;background-position:center;"></div>
+  <div class="about-name-bg" aria-hidden="true"></div>
   <div style="position:absolute;inset:0;background:rgba(18,20,21,0.75);"></div>
   <div class="about-name-inner" style="position:relative;z-index:2;">
     <img src="/images/huginnhgold.png" alt="" class="about-name-raven reveal" aria-hidden="true" width="48" height="48"/>
