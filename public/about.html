@@ -93,10 +93,11 @@ section{position:relative}
 .about-name-divider{width:60px;height:1px;background:rgba(140,115,85,0.3);margin:48px auto;border:none}
 
 /* ── FOUNDER SECTION ─────────────────────────────────────────── */
-.about-founder{background:var(--obsidian-deep);padding:clamp(80px,12vh,140px) 0}
-.about-founder-inner{max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,80px);display:grid;grid-template-columns:1fr 1fr;gap:clamp(48px,6vw,80px);align-items:center}
-.about-founder-img{overflow:hidden;border-radius:2px;position:relative}
-.about-founder-img img{width:100%;height:100%;object-fit:cover;display:block;max-height:640px;border-radius:2px}
+.about-founder{background:var(--obsidian-deep);padding:0}
+.about-founder-inner{max-width:1200px;margin:0 auto;padding:0;display:grid;grid-template-columns:600px 1fr;gap:0;min-height:600px;align-items:stretch}
+.about-founder-img{overflow:hidden;border-radius:0;height:600px;width:100%}
+.about-founder-img img{width:100%;height:600px;object-fit:cover;object-position:center 20%;display:block}
+.about-founder-text{padding:clamp(48px,6vw,80px) clamp(32px,4vw,64px);display:flex;flex-direction:column;justify-content:center}
 .about-founder-heading{font-family:var(--font-display);font-size:clamp(36px,4vw,58px);color:var(--silver);letter-spacing:2px;line-height:1;text-transform:uppercase;margin-bottom:clamp(24px,4vh,36px)}
 .about-founder-body{font-family:var(--font-body);font-size:clamp(15px,1.6vw,17px);font-weight:300;color:var(--silver-dim);line-height:1.9}
 .about-founder-body p{margin-bottom:20px}
@@ -108,6 +109,7 @@ section{position:relative}
 .about-field-overlay{position:absolute;inset:0;background:rgba(18,20,21,0.55);z-index:1}
 .about-field-content{position:relative;z-index:2;text-align:center;padding:0 clamp(20px,5vw,80px);max-width:780px}
 .about-field-heading{font-family:var(--font-display);font-size:clamp(36px,7vw,80px);color:var(--silver);letter-spacing:2px;line-height:1;text-transform:uppercase;margin-bottom:0}
+.about-field-body{font-family:var(--font-body);font-size:clamp(15px,1.8vw,18px);font-weight:300;color:var(--silver-dim);line-height:1.9;max-width:580px;margin:clamp(16px,3vh,24px) auto 0}
 
 /* ── MISSION SECTION ─────────────────────────────────────────── */
 .about-mission{position:relative;height:clamp(520px,68vh,780px);display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
@@ -138,11 +140,25 @@ section{position:relative}
 
 /* ── RESPONSIVE ──────────────────────────────────────────────── */
 @media (max-width:768px){
-  .about-founder-inner{grid-template-columns:1fr}
-  .about-founder-img img{max-height:400px}
+  .nav-wordmark{font-size:20px;letter-spacing:2px}
+  .about-hero{min-height:500px}
+  .about-hero-bg{background-position:70% center}
+  .about-name{padding:clamp(60px,10vh,100px) 0}
+  .about-founder-inner{grid-template-columns:1fr;min-height:auto}
+  .about-founder-img{height:380px;width:100%}
+  .about-founder-img img{height:380px;object-position:center 20%}
+  .about-founder-text{padding:clamp(36px,6vw,56px) clamp(20px,5vw,36px)}
+  .about-field{height:clamp(360px,50vh,520px)}
+  .about-mission{height:clamp(440px,60vh,640px)}
   .footer-inner{flex-direction:column;align-items:center;text-align:center;gap:12px}
   .footer-right{flex-direction:column;gap:12px}
-  .nav-wordmark{font-size:20px;letter-spacing:2px}
+}
+@media (max-width:480px){
+  .about-hero-heading{font-size:clamp(42px,14vw,72px)}
+  .about-hero-sub{font-size:14px}
+  .about-name-heading{font-size:clamp(32px,10vw,52px)}
+  .about-founder-img{height:320px}
+  .about-founder-img img{height:320px}
 }
 </style>
 </head>
@@ -190,11 +206,12 @@ section{position:relative}
 
 <!-- SECTION 3: BUILT BY HUNTERS -->
 <section class="about-field" id="builtby" aria-labelledby="builtbyHeading">
-  <div class="about-field-bg" id="fieldBg" style="background-image:url('/images/sunset.jpg');background-size:cover;background-position:center;" role="img" aria-label="Hunter at golden hour in the field"></div>
+  <div class="about-field-bg" id="fieldBg" style="background-image:url('/images/camp.jpg');background-size:cover;background-position:center;" role="img" aria-label="Hunter at golden hour in the field"></div>
   <div class="about-field-overlay" aria-hidden="true"></div>
   <div class="about-field-content">
-    <span class="section-eyebrow reveal">Built by Hunters</span>
-    <h2 class="about-field-heading reveal reveal-delay-1" id="builtbyHeading">Built by hunters.<br/>For hunters.</h2>
+    <span class="section-eyebrow reveal">The Off-Season Edge</span>
+    <h2 class="about-field-heading reveal reveal-delay-1" id="builtbyHeading">Scout Harder. Pattern Deeper.<br/>Win the Off-Season.</h2>
+    <p class="about-field-body reveal reveal-delay-2">The data you collect between seasons is the edge you carry into them. Huginn makes sure none of it gets lost.</p>
   </div>
 </section>
 
@@ -202,7 +219,7 @@ section{position:relative}
 <section class="about-founder" id="founder" aria-labelledby="founderHeading">
   <div class="about-founder-inner">
     <div class="about-founder-img reveal">
-      <img src="images/abouttwo.jpg" alt="Hunter kneeling with harvested whitetail at night" style="width:100%;height:100%;object-fit:cover;" width="600" height="640"style="width:100%;height:600px;object-fit:cover;object-position:center top;"/>
+      <img src="/images/newabouttwo.JPG" alt="Bowhunter at full draw in the rain" width="600" height="600"/>
     </div>
     <div class="about-founder-text">
       <span class="section-eyebrow reveal">Why We Built This</span>
@@ -249,7 +266,7 @@ section{position:relative}
 document.addEventListener('DOMContentLoaded', function() {
   const heroBgEl = document.getElementById('heroBg');
   if(heroBgEl) {
-    heroBgEl.style.backgroundImage = "url('/images/aboutone.jpg')";
+    heroBgEl.style.backgroundImage = "url('/images/newaboutone.JPG')";
     heroBgEl.style.backgroundSize = 'cover';
     heroBgEl.style.backgroundPosition = 'center';
   }
