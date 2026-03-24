@@ -120,8 +120,9 @@ section{position:relative}
 .feat-modal-bullets li svg{flex-shrink:0;width:18px;height:18px;color:var(--bronze);margin-top:3px}
 .feat-modal-screens{display:flex;flex-direction:column;gap:clamp(16px,3vh,24px);margin-bottom:clamp(32px,5vh,48px)}
 .feat-modal-screens-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:clamp(12px,2vw,20px)}
-.feat-modal-screenshot{border-radius:12px;overflow:hidden;box-shadow:0 6px 32px rgba(0,0,0,0.45);border:1px solid rgba(140,115,85,0.1)}
-.feat-modal-screenshot img{width:100%;height:auto;display:block}
+.feat-modal-screenshot{text-align:center}
+.feat-modal-screenshot-caption{font-family:var(--font-heading);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--bronze);margin-bottom:8px}
+.feat-modal-screenshot img{max-width:320px;width:100%;height:auto;display:block;margin:0 auto 24px auto;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,0.5)}
 .feat-modal-cta{text-align:center;padding-top:clamp(8px,2vh,16px)}
 /* ── FIELD SECTION (full-bleed) ──────────────────────────────── */
 .field{height:clamp(500px,70vh,800px);display:flex;align-items:center;justify-content:center;overflow:hidden}
@@ -263,14 +264,17 @@ section{position:relative}
     <div class="feat-modal-screens">
       <div class="feat-modal-screens-row">
         <div class="feat-modal-screenshot">
+          <p class="feat-modal-screenshot-caption">Buck Movement Tracking</p>
           <img src="/images/map-movement-lines.jpg" alt="Movement lines on satellite map showing buck travel between cameras" loading="lazy"/>
         </div>
         <div class="feat-modal-screenshot">
+          <p class="feat-modal-screenshot-caption">Seasonal Activity Dot Map</p>
           <img src="/images/map-dot-map.jpg" alt="Seasonal dot map showing deer activity clusters" loading="lazy"/>
         </div>
       </div>
       <div class="feat-modal-screens-row">
         <div class="feat-modal-screenshot">
+          <p class="feat-modal-screenshot-caption">Time of Day Intelligence</p>
           <img src="/images/map-legend.jpg" alt="Map legend and filter controls" loading="lazy"/>
         </div>
       </div>
@@ -304,14 +308,17 @@ section{position:relative}
     <div class="feat-modal-screens">
       <div class="feat-modal-screens-row">
         <div class="feat-modal-screenshot">
+          <p class="feat-modal-screenshot-caption">AI Buck Identification</p>
           <img src="/images/sighting-form-ai.jpg" alt="AI buck identification form with confidence score" loading="lazy"/>
         </div>
         <div class="feat-modal-screenshot">
+          <p class="feat-modal-screenshot-caption">Auto-Applied Weather Data</p>
           <img src="/images/sighting-form-weather.jpg" alt="Sighting form with auto-applied weather data" loading="lazy"/>
         </div>
       </div>
       <div class="feat-modal-screens-row">
         <div class="feat-modal-screenshot">
+          <p class="feat-modal-screenshot-caption">Buck Profile Dossier</p>
           <img src="/images/intel-buck-card.jpg" alt="Buck intel card showing sighting history and patterns" loading="lazy"/>
         </div>
       </div>
@@ -345,22 +352,27 @@ section{position:relative}
     <div class="feat-modal-screens">
       <div class="feat-modal-screens-row">
         <div class="feat-modal-screenshot">
+          <p class="feat-modal-screenshot-caption">Wind Rose & Activity Analytics</p>
           <img src="/images/intel-analytics.jpg" alt="Property analytics dashboard with hunt scores" loading="lazy"/>
         </div>
         <div class="feat-modal-screenshot">
+          <p class="feat-modal-screenshot-caption">AI-Powered Key Insights</p>
           <img src="/images/intel-insights.jpg" alt="AI insights engine showing discovered patterns" loading="lazy"/>
         </div>
       </div>
       <div class="feat-modal-screens-row">
         <div class="feat-modal-screenshot">
+          <p class="feat-modal-screenshot-caption">7-Day Hunt Forecast Scoring</p>
           <img src="/images/intel-forecast.jpg" alt="Hunt forecast and daily recommendations" loading="lazy"/>
         </div>
       </div>
       <div class="feat-modal-screens-row">
         <div class="feat-modal-screenshot">
+          <p class="feat-modal-screenshot-caption">Hunt AI Assistant</p>
           <img src="/images/hunt-ai-chat.jpg" alt="Hunt AI chat assistant interface" loading="lazy"/>
         </div>
         <div class="feat-modal-screenshot">
+          <p class="feat-modal-screenshot-caption">Property Intelligence Builder</p>
           <img src="/images/property-intel.jpg" alt="Property intelligence dashboard" loading="lazy"/>
         </div>
       </div>
