@@ -99,14 +99,41 @@ section{position:relative}
 .section-eyebrow{font-family:var(--font-heading);font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--bronze);margin-bottom:16px;display:block}
 .section-title{font-family:var(--font-display);font-size:clamp(36px,6vw,72px);letter-spacing:2px;color:var(--silver);line-height:1;margin-bottom:clamp(48px,8vh,80px);text-transform:uppercase}
 .how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,4vw,48px)}
-.how-card{padding:clamp(28px,3vw,40px);background:rgba(26,28,30,0.6);border:1px solid rgba(140,115,85,0.12);border-radius:2px;position:relative;overflow:hidden;transition:border-color 0.3s,transform 0.3s var(--ease-out)}
+.how-card{padding:clamp(28px,3vw,40px);background:rgba(26,28,30,0.6);border:1px solid rgba(140,115,85,0.12);border-radius:2px;position:relative;overflow:hidden;transition:border-color 0.3s,transform 0.3s var(--ease-out),box-shadow 0.3s;cursor:pointer}
 .how-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--bronze),transparent);opacity:0;transition:opacity 0.3s}
-.how-card:hover{border-color:rgba(140,115,85,0.3);transform:translateY(-4px)}
+.how-card:hover{border-color:rgba(140,115,85,0.35);transform:translateY(-4px);box-shadow:0 0 20px rgba(140,115,85,0.12)}
 .how-card:hover::before{opacity:1}
 .how-card-num{font-family:var(--font-display);font-size:56px;color:rgba(140,115,85,0.1);line-height:1;margin-bottom:16px}
 .how-icon{width:44px;height:44px;margin-bottom:20px;color:var(--bronze)}
 .how-card-title{font-family:var(--font-heading);font-size:18px;font-weight:700;color:var(--silver);margin-bottom:12px;letter-spacing:0.5px}
 .how-card-body{font-family:var(--font-body);font-size:15px;font-weight:300;color:var(--silver-dim);line-height:1.8}
+.how-card-link{font-family:var(--font-heading);font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--bronze);margin-top:20px;display:inline-flex;align-items:center;gap:6px;opacity:0.7;transition:opacity 0.25s}
+.how-card:hover .how-card-link{opacity:1}
+
+/* ── FEATURE MODALS ──────────────────────────────────────────── */
+.feat-modal-backdrop{position:fixed;inset:0;background:rgba(10,11,12,0.92);backdrop-filter:blur(12px);z-index:9000;display:flex;align-items:flex-start;justify-content:center;padding:0;opacity:0;pointer-events:none;transition:opacity 0.35s var(--ease-out);overflow-y:auto;-webkit-overflow-scrolling:touch}
+.feat-modal-backdrop.open{opacity:1;pointer-events:all}
+.feat-modal{background:var(--obsidian);border:1px solid rgba(140,115,85,0.15);border-radius:0;width:100%;max-width:640px;margin:0 auto;padding:clamp(60px,8vh,80px) clamp(24px,5vw,56px) clamp(40px,6vh,60px);position:relative;transform:translateY(20px);transition:transform 0.4s var(--ease-out);min-height:100vh}
+@media (min-width:769px){
+  .feat-modal{border-radius:4px;margin:clamp(40px,6vh,80px) auto;min-height:auto}
+}
+.feat-modal-backdrop.open .feat-modal{transform:translateY(0)}
+.feat-modal-close{position:fixed;top:20px;right:20px;background:rgba(26,28,30,0.8);border:1px solid rgba(140,115,85,0.2);border-radius:50%;width:44px;height:44px;display:flex;align-items:center;justify-content:center;color:var(--silver-dim);font-size:20px;cursor:pointer;z-index:9001;transition:color 0.2s,border-color 0.2s;line-height:1}
+.feat-modal-close:hover{color:var(--silver);border-color:rgba(140,115,85,0.4)}
+.feat-modal-eyebrow{font-family:var(--font-heading);font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--bronze);margin-bottom:20px;display:block}
+.feat-modal-heading{font-family:var(--font-display);font-size:clamp(32px,6vw,56px);color:var(--silver);letter-spacing:1px;line-height:1.05;text-transform:uppercase;margin-bottom:clamp(16px,3vh,28px)}
+.feat-modal-body{font-family:var(--font-body);font-size:clamp(15px,1.6vw,17px);font-weight:300;color:var(--silver-dim);line-height:1.85;margin-bottom:clamp(28px,4vh,40px);max-width:560px}
+.feat-modal-bullets{list-style:none;padding:0;margin:0 0 clamp(32px,5vh,48px);display:flex;flex-direction:column;gap:16px}
+.feat-modal-bullets li{display:flex;align-items:flex-start;gap:12px;font-family:var(--font-body);font-size:15px;font-weight:400;color:var(--silver);line-height:1.7}
+.feat-modal-bullets li svg{flex-shrink:0;width:18px;height:18px;color:var(--bronze);margin-top:3px}
+.feat-modal-screens{display:flex;flex-direction:column;gap:clamp(16px,3vh,24px);margin-bottom:clamp(32px,5vh,48px)}
+.feat-modal-phone{position:relative;background:var(--obsidian-deep);border:2px solid rgba(140,115,85,0.15);border-radius:16px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,0.5);aspect-ratio:9/16;max-width:280px;margin:0 auto;width:100%}
+.feat-modal-phone img{width:100%;height:100%;object-fit:cover;display:block}
+.feat-modal-phone-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:var(--font-heading);font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--bronze);text-align:center;padding:20px}
+.feat-modal-screens-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:clamp(12px,2vw,20px)}
+.feat-modal-screenshot{border-radius:12px;overflow:hidden;box-shadow:0 6px 32px rgba(0,0,0,0.45);border:1px solid rgba(140,115,85,0.1)}
+.feat-modal-screenshot img{width:100%;height:auto;display:block}
+.feat-modal-cta{text-align:center;padding-top:clamp(8px,2vh,16px)}
 
 /* ── FIELD SECTION (full-bleed) ──────────────────────────────── */
 .field{height:clamp(500px,70vh,800px);display:flex;align-items:center;justify-content:center;overflow:hidden}
@@ -202,6 +229,8 @@ section{position:relative}
   .waitlist-form .btn-gold{border-radius:0 0 4px 4px;width:100%}
   .footer-inner{flex-direction:column;align-items:center;text-align:center;gap:12px}
   .nav-wordmark{font-size:20px;letter-spacing:2px}
+  .feat-modal-close{top:12px;right:12px;width:40px;height:40px}
+  .feat-modal-screens-row{grid-template-columns:1fr}
 }
 @media (max-width:480px){
   .hero-content{gap:clamp(8px,2vh,14px)}
@@ -228,6 +257,135 @@ section{position:relative}
     </div>
     <div class="modal-status" id="modalStatus" role="status" aria-live="polite"></div>
     <p class="modal-note">No spam. We hate it as much as you do.</p>
+  </div>
+</div>
+
+<!-- FEATURE MODAL: MAP YOUR PROPERTY -->
+<div class="feat-modal-backdrop" id="featModalMap" role="dialog" aria-modal="true" aria-labelledby="featMapTitle">
+  <button class="feat-modal-close" aria-label="Close">&times;</button>
+  <div class="feat-modal">
+    <span class="feat-modal-eyebrow">Map Your Property</span>
+    <h2 class="feat-modal-heading" id="featMapTitle">Every Buck. Every Camera.<br/>Every Movement.</h2>
+    <p class="feat-modal-body">Drop pins, log trail cameras, and watch deer movement patterns emerge across your property. Huginn maps every sighting, tracks individual bucks across cameras, and shows you exactly where they're moving — and when.</p>
+    <ul class="feat-modal-bullets">
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        Movement lines show chronological travel between cameras
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        Seasonal dot maps reveal activity clusters by month
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        Core area probability zones project bedding locations
+      </li>
+    </ul>
+    <div class="feat-modal-screens">
+      <div class="feat-modal-screens-row">
+        <div class="feat-modal-screenshot">
+          <img src="/images/map-movement-lines.jpg" alt="Movement lines on satellite map showing buck travel between cameras" loading="lazy"/>
+        </div>
+        <div class="feat-modal-screenshot">
+          <img src="/images/map-dot-map.jpg" alt="Seasonal dot map showing deer activity clusters" loading="lazy"/>
+        </div>
+      </div>
+      <div class="feat-modal-screens-row">
+        <div class="feat-modal-screenshot">
+          <img src="/images/map-legend.jpg" alt="Map legend and filter controls" loading="lazy"/>
+        </div>
+      </div>
+    </div>
+    <div class="feat-modal-cta">
+      <button class="btn-gold" onclick="closeFeatureModal();openModal();">Join the Waitlist</button>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURE MODAL: LOG WHAT YOU SEE -->
+<div class="feat-modal-backdrop" id="featModalLog" role="dialog" aria-modal="true" aria-labelledby="featLogTitle">
+  <button class="feat-modal-close" aria-label="Close">&times;</button>
+  <div class="feat-modal">
+    <span class="feat-modal-eyebrow">Log What You See</span>
+    <h2 class="feat-modal-heading" id="featLogTitle">AI That Learns<br/>Your Bucks.</h2>
+    <p class="feat-modal-body">Upload a trail cam photo and Huginn's AI identifies the buck, matches it to your history, and auto-fills date, time, and weather. Every sighting builds a deeper profile — behavior, patterns, preferred conditions.</p>
+    <ul class="feat-modal-bullets">
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        AI buck matching with confidence scoring and reasoning
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        Historical weather auto-applied to every sighting
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        Moon phase, wind direction, and behavior tracked automatically
+      </li>
+    </ul>
+    <div class="feat-modal-screens">
+      <div class="feat-modal-screens-row">
+        <div class="feat-modal-screenshot">
+          <img src="/images/sighting-form-ai.jpg" alt="AI buck identification form with confidence score" loading="lazy"/>
+        </div>
+        <div class="feat-modal-screenshot">
+          <img src="/images/sighting-form-weather.jpg" alt="Sighting form with auto-applied weather data" loading="lazy"/>
+        </div>
+      </div>
+      <div class="feat-modal-screens-row">
+        <div class="feat-modal-screenshot">
+          <img src="/images/intel-buck-card.jpg" alt="Buck intel card showing sighting history and patterns" loading="lazy"/>
+        </div>
+      </div>
+    </div>
+    <div class="feat-modal-cta">
+      <button class="btn-gold" onclick="closeFeatureModal();openModal();">Join the Waitlist</button>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURE MODAL: HUNT WITH INTELLIGENCE -->
+<div class="feat-modal-backdrop" id="featModalHunt" role="dialog" aria-modal="true" aria-labelledby="featHuntTitle">
+  <button class="feat-modal-close" aria-label="Close">&times;</button>
+  <div class="feat-modal">
+    <span class="feat-modal-eyebrow">Hunt With Intelligence</span>
+    <h2 class="feat-modal-heading" id="featHuntTitle">Your Property. Your Data.<br/>Your Edge.</h2>
+    <p class="feat-modal-body">Huginn analyzes years of sighting data to tell you when to hunt, where to sit, and which bucks are moving. Daily hunt scores, AI-powered insights, and a property intelligence assistant that knows your land.</p>
+    <ul class="feat-modal-bullets">
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        Daily hunt scores based on your property's actual deer behavior data
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        AI insights engine surfaces patterns you'd never find manually
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        Hunt Assistant answers questions about your specific property
+      </li>
+    </ul>
+    <div class="feat-modal-screens">
+      <div class="feat-modal-screens-row">
+        <div class="feat-modal-screenshot">
+          <img src="/images/intel-analytics.jpg" alt="Property analytics dashboard with hunt scores" loading="lazy"/>
+        </div>
+        <div class="feat-modal-screenshot">
+          <img src="/images/intel-insights.jpg" alt="AI insights engine showing discovered patterns" loading="lazy"/>
+        </div>
+      </div>
+      <div class="feat-modal-screens-row">
+        <div class="feat-modal-screenshot">
+          <img src="/images/intel-forecast.jpg" alt="Hunt forecast and daily recommendations" loading="lazy"/>
+        </div>
+        <div class="feat-modal-phone">
+          <div class="feat-modal-phone-placeholder">Hunt AI — Coming Soon</div>
+        </div>
+      </div>
+    </div>
+    <div class="feat-modal-cta">
+      <button class="btn-gold" onclick="closeFeatureModal();openModal();">Join the Waitlist</button>
+    </div>
   </div>
 </div>
 
@@ -273,7 +431,7 @@ section{position:relative}
     <h2 class="section-title reveal reveal-delay-1" id="howTitle">Hunt Smarter<br/>Every Season</h2>
     <div class="how-grid reveal-stagger">
 
-      <article class="how-card">
+      <article class="how-card" onclick="openFeatureModal('map')" role="button" tabindex="0" aria-label="Learn more about Map Your Property">
         <div class="how-card-num" aria-hidden="true">01</div>
         <svg class="how-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
@@ -281,9 +439,12 @@ section{position:relative}
         </svg>
         <h3 class="how-card-title">Map Your Property</h3>
         <p class="how-card-body">Place cameras, stands, scrapes, and bedding areas directly on your satellite map. Every inch of your property, organized and searchable.</p>
+        <span class="how-card-link" aria-hidden="true">Learn More
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </span>
       </article>
 
-      <article class="how-card">
+      <article class="how-card" onclick="openFeatureModal('log')" role="button" tabindex="0" aria-label="Learn more about Log What You See">
         <div class="how-card-num" aria-hidden="true">02</div>
         <svg class="how-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
@@ -291,9 +452,12 @@ section{position:relative}
         </svg>
         <h3 class="how-card-title">Log What You See</h3>
         <p class="how-card-body">Trail cam photos, field observations, and buck sightings — all in one place. AI identifies your named bucks automatically.</p>
+        <span class="how-card-link" aria-hidden="true">Learn More
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </span>
       </article>
 
-      <article class="how-card">
+      <article class="how-card" onclick="openFeatureModal('hunt')" role="button" tabindex="0" aria-label="Learn more about Hunt With Intelligence">
         <div class="how-card-num" aria-hidden="true">03</div>
         <svg class="how-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <circle cx="12" cy="12" r="10"/>
@@ -305,6 +469,9 @@ section{position:relative}
         </svg>
         <h3 class="how-card-title">Hunt With Intelligence</h3>
         <p class="how-card-body">Huginn analyzes your data and tells you when, where, and how to hunt. Movement patterns, wind correlations, peak activity windows.</p>
+        <span class="how-card-link" aria-hidden="true">Learn More
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </span>
       </article>
 
     </div>
@@ -379,7 +546,7 @@ const SUPA_URL = 'https://drzmfoaspnahzbrrmnrv.supabase.co';
 const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRyem1mb2FzcG5haHpicnJtbnJ2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMwNzQ0NzMsImV4cCI6MjA4ODY1MDQ3M30.-2nFoPIqeutHMKFWEJUvILZ54mq2h-RR1PlC7yxm-x8';
 const sb = supabase.createClient(SUPA_URL, SUPA_KEY);
 
-// ── MODAL ─────────────────────────────────────────────────────
+// ── WAITLIST MODAL ────────────────────────────────────────────
 const modal = document.getElementById('waitlistModal');
 const modalClose = document.getElementById('modalClose');
 const heroBtn = document.getElementById('heroWaitlistBtn');
@@ -390,7 +557,7 @@ const modalEmail = document.getElementById('modalEmail');
 function openModal() {
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
-  setTimeout(() => modalEmail.focus(), 100);
+  setTimeout(function() { modalEmail.focus(); }, 100);
 }
 
 function closeModal() {
@@ -418,7 +585,7 @@ function setModalStatus(msg, type) {
 }
 
 modalSubmit.addEventListener('click', async function() {
-  const email = modalEmail.value.trim().toLowerCase();
+  var email = modalEmail.value.trim().toLowerCase();
   if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     setModalStatus('Please enter a valid email address.', 'error');
     return;
@@ -427,9 +594,9 @@ modalSubmit.addEventListener('click', async function() {
   modalSubmit.textContent = 'Joining...';
   setModalStatus('', '');
   try {
-    const { error } = await sb.from('waitlist').insert({ email });
-    if(error) {
-      if(error.code === '23505' || (error.message && error.message.includes('unique'))) {
+    var res = await sb.from('waitlist').insert({ email: email });
+    if(res.error) {
+      if(res.error.code === '23505' || (res.error.message && res.error.message.includes('unique'))) {
         setModalStatus("You're already on the list.", 'info');
       } else {
         setModalStatus('Something went wrong. Try again.', 'error');
@@ -447,8 +614,63 @@ modalSubmit.addEventListener('click', async function() {
   }
 });
 
+// ── FEATURE MODALS ────────────────────────────────────────────
+var featModalIds = { map: 'featModalMap', log: 'featModalLog', hunt: 'featModalHunt' };
+var activeFeatModal = null;
+
+function openFeatureModal(type) {
+  var id = featModalIds[type];
+  if(!id) return;
+  var el = document.getElementById(id);
+  if(!el) return;
+  activeFeatModal = el;
+  el.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeFeatureModal() {
+  if(activeFeatModal) {
+    activeFeatModal.classList.remove('open');
+    activeFeatModal = null;
+  }
+  // Only restore scroll if waitlist modal is not about to open
+  if(!modal.classList.contains('open')) {
+    document.body.style.overflow = '';
+  }
+}
+
+// Close buttons
+document.querySelectorAll('.feat-modal-close').forEach(function(btn) {
+  btn.addEventListener('click', closeFeatureModal);
+});
+
+// Click outside
+document.querySelectorAll('.feat-modal-backdrop').forEach(function(backdrop) {
+  backdrop.addEventListener('click', function(e) {
+    if(e.target === backdrop) closeFeatureModal();
+  });
+});
+
+// ESC key (feature modals take priority over waitlist modal)
+document.addEventListener('keydown', function(e) {
+  if(e.key === 'Escape' && activeFeatModal) {
+    closeFeatureModal();
+    e.stopImmediatePropagation();
+  }
+});
+
+// Keyboard accessibility for cards
+document.querySelectorAll('.how-card[role="button"]').forEach(function(card) {
+  card.addEventListener('keydown', function(e) {
+    if(e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      card.click();
+    }
+  });
+});
+
 // ── NAV SCROLL BEHAVIOR ───────────────────────────────────────
-const mainNav = document.getElementById('mainNav');
+var mainNav = document.getElementById('mainNav');
 function handleNavScroll() {
   mainNav.classList.toggle('scrolled', window.scrollY > 60);
 }
@@ -456,28 +678,28 @@ window.addEventListener('scroll', handleNavScroll, { passive: true });
 handleNavScroll();
 
 // ── PARALLAX ─────────────────────────────────────────────────
-const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const heroBg = document.getElementById('heroBg');
-const fieldBg = document.getElementById('fieldBg');
-const resultBg = document.getElementById('resultBg');
+var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var heroBg = document.getElementById('heroBg');
+var fieldBg = document.getElementById('fieldBg');
+var resultBg = document.getElementById('resultBg');
 
 function applyParallax(el, scrollY, offset, factor) {
   if(!el || prefersReducedMotion) return;
-  const rect = el.parentElement.getBoundingClientRect();
+  var rect = el.parentElement.getBoundingClientRect();
   if(rect.bottom < 0 || rect.top > window.innerHeight) return;
-  const progress = (scrollY - offset) * factor;
-  el.style.transform = `translateY(${progress}px)`;
+  var progress = (scrollY - offset) * factor;
+  el.style.transform = 'translateY(' + progress + 'px)';
 }
 
-let ticking = false;
-let lastScrollY = 0;
-window.addEventListener('scroll', () => {
+var ticking = false;
+var lastScrollY = 0;
+window.addEventListener('scroll', function() {
   lastScrollY = window.scrollY;
   if(!ticking) {
-    requestAnimationFrame(() => {
+    requestAnimationFrame(function() {
       applyParallax(heroBg, lastScrollY, 0, 0.35);
-      const fieldEl = document.getElementById('field');
-      const resultEl = document.getElementById('result');
+      var fieldEl = document.getElementById('field');
+      var resultEl = document.getElementById('result');
       if(fieldEl) applyParallax(fieldBg, lastScrollY, fieldEl.offsetTop, 0.2);
       if(resultEl) applyParallax(resultBg, lastScrollY, resultEl.offsetTop, 0.2);
       ticking = false;
@@ -488,10 +710,10 @@ window.addEventListener('scroll', () => {
 
 // ── HERO IMAGE LOAD ───────────────────────────────────────────
 function initHeroImg() {
-  const img = new Image();
-  img.onload = () => {
+  var img = new Image();
+  img.onload = function() {
     heroBg.style.backgroundImage = "url('/images/hero.jpg')";
-    const ph = document.getElementById('heroPlaceholder');
+    var ph = document.getElementById('heroPlaceholder');
     if(ph) ph.style.display = 'none';
   };
   img.src = '/images/hero.jpg';
@@ -500,35 +722,35 @@ initHeroImg();
 
 // ── SCROLL REVEAL ─────────────────────────────────────────────
 if(!prefersReducedMotion) {
-  const revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
+  var revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
       if(e.isIntersecting) {
         e.target.classList.add('visible');
         observer.unobserve(e.target);
       }
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-  revealEls.forEach(el => observer.observe(el));
+  revealEls.forEach(function(el) { observer.observe(el); });
 } else {
-  document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => {
+  document.querySelectorAll('.reveal, .reveal-stagger').forEach(function(el) {
     el.classList.add('visible');
   });
 }
 
-// ── WAITLIST FORM (bottom section — unchanged) ────────────────
-const waitlistForm = document.getElementById('waitlistForm');
-const waitlistStatus = document.getElementById('waitlistStatus');
-const waitlistSubmit = document.getElementById('waitlistSubmit');
+// ── WAITLIST FORM (bottom section) ────────────────────────────
+var waitlistForm = document.getElementById('waitlistForm');
+var waitlistStatus = document.getElementById('waitlistStatus');
+var waitlistSubmit = document.getElementById('waitlistSubmit');
 
 function setStatus(msg, type) {
   waitlistStatus.textContent = msg;
   waitlistStatus.className = 'waitlist-status ' + type;
 }
 
-waitlistForm.addEventListener('submit', async (e) => {
+waitlistForm.addEventListener('submit', async function(e) {
   e.preventDefault();
-  const email = document.getElementById('waitlistEmail').value.trim().toLowerCase();
+  var email = document.getElementById('waitlistEmail').value.trim().toLowerCase();
   if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     setStatus('Please enter a valid email address.', 'error');
     return;
@@ -537,12 +759,12 @@ waitlistForm.addEventListener('submit', async (e) => {
   waitlistSubmit.textContent = 'Joining...';
   setStatus('', '');
   try {
-    const { error } = await sb.from('waitlist').insert({ email });
-    if(error) {
-      if(error.code === '23505' || (error.message && error.message.includes('unique'))) {
+    var res = await sb.from('waitlist').insert({ email: email });
+    if(res.error) {
+      if(res.error.code === '23505' || (res.error.message && res.error.message.includes('unique'))) {
         setStatus("You're already on the list.", 'info');
       } else {
-        console.error('Waitlist error:', error);
+        console.error('Waitlist error:', res.error);
         setStatus('Something went wrong. Try again.', 'error');
       }
       waitlistSubmit.disabled = false;
@@ -551,7 +773,7 @@ waitlistForm.addEventListener('submit', async (e) => {
     }
     setStatus("You're on the list. We'll be in touch.", 'success');
     waitlistForm.reset();
-    waitlistSubmit.textContent = 'You\'re In';
+    waitlistSubmit.textContent = "You're In";
   } catch(err) {
     console.error('Waitlist exception:', err);
     setStatus('Something went wrong. Try again.', 'error');
