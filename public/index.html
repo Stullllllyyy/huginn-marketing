@@ -21,7 +21,6 @@ CREATE TABLE IF NOT EXISTS waitlist (
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Raleway:wght@300;400;500;600;700&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <style>
 /* ── RESET & TOKENS ─────────────────────────────────────────── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -43,10 +42,8 @@ CREATE TABLE IF NOT EXISTS waitlist (
 }
 html{scroll-behavior:smooth;background:var(--obsidian-deep)}
 body{font-family:var(--font-body);color:var(--silver);background:var(--obsidian-deep);overflow-x:hidden;-webkit-font-smoothing:antialiased}
-
 /* ── UTILITY ────────────────────────────────────────────────── */
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-
 /* ── NAVIGATION ─────────────────────────────────────────────── */
 .nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,4vw,60px);transition:background 0.4s var(--ease-out),backdrop-filter 0.4s,border-bottom-color 0.4s;border-bottom:1px solid transparent}
 .nav.scrolled{background:rgba(10,11,12,0.96);backdrop-filter:blur(16px);border-bottom-color:rgba(140,115,85,0.15)}
@@ -60,14 +57,12 @@ body{font-family:var(--font-body);color:var(--silver);background:var(--obsidian-
 .nav-link{font-family:var(--font-heading);font-size:13px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--silver-dim);text-decoration:none;padding:8px 16px;transition:color 0.25s}
 .nav-link:hover{color:var(--bronze)}
 .nav-link:focus-visible{outline:2px solid var(--bronze);outline-offset:3px}
-
 /* ── BUTTONS ─────────────────────────────────────────────────── */
 .btn-gold{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--font-heading);font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--obsidian-deep);background:var(--bronze);border:none;border-radius:4px;padding:16px 40px;cursor:pointer;transition:transform 0.25s var(--ease-out),box-shadow 0.25s,background 0.2s;box-shadow:0 4px 20px rgba(140,115,85,0.3);text-decoration:none;white-space:nowrap;-webkit-appearance:none}
 .btn-gold:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(140,115,85,0.45);background:var(--bronze-light)}
 .btn-gold:active{transform:translateY(-1px)}
 .btn-gold:focus-visible{outline:2px solid var(--sulfur);outline-offset:3px}
 .btn-gold:disabled{opacity:0.6;cursor:not-allowed;transform:none}
-
 /* ── HERO ────────────────────────────────────────────────────── */
 .hero{position:relative;height:100vh;min-height:600px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden}
 .hero-bg{position:absolute;inset:0;background-image:url('/images/hero.jpg');background-size:cover;background-position:center 30%;will-change:transform}
@@ -87,11 +82,9 @@ body{font-family:var(--font-body);color:var(--silver);background:var(--obsidian-
 .hero-scroll-lbl{font-family:var(--font-heading);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--tungsten)}
 .hero-scroll-line{width:1px;height:40px;background:linear-gradient(180deg,var(--bronze) 0%,transparent 100%);animation:scrollPulse 2s 1.5s ease-in-out infinite}
 @keyframes scrollPulse{0%,100%{opacity:0.3;transform:scaleY(0.6)}50%{opacity:1;transform:scaleY(1)}}
-
 /* ── SECTION BASE ────────────────────────────────────────────── */
 section{position:relative}
 .section-inner{max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,80px)}
-
 /* ── HOW IT WORKS ────────────────────────────────────────────── */
 .how{background:var(--obsidian);padding:clamp(80px,12vh,140px) 0;overflow:hidden}
 .how-bg{position:absolute;inset:0;background-image:url('/images/glassing.jpg');background-size:cover;background-position:center;opacity:0.20}
@@ -109,7 +102,6 @@ section{position:relative}
 .how-card-body{font-family:var(--font-body);font-size:15px;font-weight:300;color:var(--silver-dim);line-height:1.8}
 .how-card-link{font-family:var(--font-heading);font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--bronze);margin-top:20px;display:inline-flex;align-items:center;gap:6px;opacity:0.7;transition:opacity 0.25s}
 .how-card:hover .how-card-link{opacity:1}
-
 /* ── FEATURE MODALS ──────────────────────────────────────────── */
 .feat-modal-backdrop{position:fixed;inset:0;background:rgba(10,11,12,0.92);backdrop-filter:blur(12px);z-index:9000;display:flex;align-items:flex-start;justify-content:center;padding:0;opacity:0;pointer-events:none;transition:opacity 0.35s var(--ease-out);overflow-y:auto;-webkit-overflow-scrolling:touch}
 .feat-modal-backdrop.open{opacity:1;pointer-events:all}
@@ -131,7 +123,6 @@ section{position:relative}
 .feat-modal-screenshot{border-radius:12px;overflow:hidden;box-shadow:0 6px 32px rgba(0,0,0,0.45);border:1px solid rgba(140,115,85,0.1)}
 .feat-modal-screenshot img{width:100%;height:auto;display:block}
 .feat-modal-cta{text-align:center;padding-top:clamp(8px,2vh,16px)}
-
 /* ── FIELD SECTION (full-bleed) ──────────────────────────────── */
 .field{height:clamp(500px,70vh,800px);display:flex;align-items:center;justify-content:center;overflow:hidden}
 .field-bg{position:absolute;inset:0;background-size:cover;background-position:center;will-change:transform}
@@ -140,7 +131,6 @@ section{position:relative}
 .field-content .section-eyebrow{justify-content:center;display:block;text-align:center}
 .field-heading{font-family:var(--font-display);font-size:clamp(36px,7vw,80px);color:var(--silver);letter-spacing:2px;line-height:1;margin-bottom:clamp(16px,3vh,28px);text-transform:uppercase}
 .field-body{font-family:var(--font-body);font-size:clamp(15px,1.8vw,18px);font-weight:300;color:var(--silver-dim);line-height:1.9;max-width:580px;margin:0 auto}
-
 /* ── THE RESULT ──────────────────────────────────────────────── */
 .result{height:clamp(400px,55vh,650px);display:flex;align-items:center;justify-content:center;overflow:hidden}
 .result-bg{position:absolute;inset:0;background-size:cover;background-position:center 40%;will-change:transform}
@@ -148,7 +138,6 @@ section{position:relative}
 .result-content{position:relative;z-index:2;text-align:center;padding:0 clamp(20px,5vw,80px)}
 .result-quote{font-family:var(--font-display);font-size:clamp(22px,4.5vw,54px);color:var(--silver);letter-spacing:1px;line-height:1.15;max-width:760px;text-transform:uppercase}
 .result-divider{width:80px;height:2px;background:var(--bronze);margin:clamp(20px,3vh,32px) auto 0;border:none}
-
 /* ── WAITLIST ────────────────────────────────────────────────── */
 .waitlist{padding:clamp(80px,12vh,140px) 0;position:relative;overflow:hidden}
 .waitlist-bg{position:absolute;inset:0;background-image:url('/images/tailgate.jpg');background-size:cover;background-position:center}
@@ -168,7 +157,6 @@ section{position:relative}
 .waitlist-status.error{color:#e87a7a}
 .waitlist-status.info{color:var(--silver-dim)}
 .waitlist-note{margin-top:20px;font-family:var(--font-body);font-size:12px;font-weight:300;color:var(--tungsten);letter-spacing:0.5px}
-
 /* ── FOOTER ──────────────────────────────────────────────────── */
 .footer{background:var(--obsidian-deep);border-top:1px solid rgba(140,115,85,0.1);padding:clamp(32px,5vh,52px) 0}
 .footer-inner{max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,80px);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
@@ -177,7 +165,6 @@ section{position:relative}
 .footer-wordmark{font-family:var(--font-display);font-size:18px;letter-spacing:3px;color:var(--bronze);opacity:0.75}
 .footer-copy{font-family:var(--font-body);font-size:12px;font-weight:300;color:var(--tungsten);letter-spacing:0.5px}
 .footer-domain{font-family:var(--font-heading);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--tungsten);opacity:0.6}
-
 /* ── WAITLIST MODAL ──────────────────────────────────────────── */
 .modal-backdrop{position:fixed;inset:0;background:rgba(10,11,12,0.88);backdrop-filter:blur(8px);z-index:500;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity 0.3s var(--ease-out)}
 .modal-backdrop.open{opacity:1;pointer-events:all}
@@ -198,7 +185,6 @@ section{position:relative}
 .modal-status.error{color:#e87a7a}
 .modal-status.info{color:var(--silver-dim)}
 .modal-note{margin-top:16px;font-family:var(--font-body);font-size:12px;font-weight:300;color:var(--tungsten)}
-
 /* ── SCROLL ANIMATIONS ───────────────────────────────────────── */
 .reveal{opacity:0;transform:translateY(32px);transition:opacity 0.8s var(--ease-out),transform 0.8s var(--ease-out)}
 .reveal.visible{opacity:1;transform:translateY(0)}
@@ -210,14 +196,12 @@ section{position:relative}
 .reveal-stagger.visible>*:nth-child(1){opacity:1;transform:translateY(0);transition-delay:0.05s}
 .reveal-stagger.visible>*:nth-child(2){opacity:1;transform:translateY(0);transition-delay:0.2s}
 .reveal-stagger.visible>*:nth-child(3){opacity:1;transform:translateY(0);transition-delay:0.35s}
-
 /* ── REDUCED MOTION ──────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important}
   html{scroll-behavior:auto}
   .hero-bg,.field-bg,.result-bg{will-change:auto}
 }
-
 /* ── RESPONSIVE ──────────────────────────────────────────────── */
 @media (max-width:768px){
   .how-grid{grid-template-columns:1fr}
@@ -239,7 +223,6 @@ section{position:relative}
 </style>
 </head>
 <body>
-
 <!-- WAITLIST MODAL -->
 <div class="modal-backdrop" id="waitlistModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
   <div class="modal">
@@ -256,7 +239,6 @@ section{position:relative}
     <p class="modal-note">No spam. We hate it as much as you do.</p>
   </div>
 </div>
-
 <!-- FEATURE MODAL: MAP YOUR PROPERTY -->
 <div class="feat-modal-backdrop" id="featModalMap" role="dialog" aria-modal="true" aria-labelledby="featMapTitle">
   <button class="feat-modal-close" aria-label="Close">&times;</button>
@@ -298,7 +280,6 @@ section{position:relative}
     </div>
   </div>
 </div>
-
 <!-- FEATURE MODAL: LOG WHAT YOU SEE -->
 <div class="feat-modal-backdrop" id="featModalLog" role="dialog" aria-modal="true" aria-labelledby="featLogTitle">
   <button class="feat-modal-close" aria-label="Close">&times;</button>
@@ -340,7 +321,6 @@ section{position:relative}
     </div>
   </div>
 </div>
-
 <!-- FEATURE MODAL: HUNT WITH INTELLIGENCE -->
 <div class="feat-modal-backdrop" id="featModalHunt" role="dialog" aria-modal="true" aria-labelledby="featHuntTitle">
   <button class="feat-modal-close" aria-label="Close">&times;</button>
@@ -378,10 +358,10 @@ section{position:relative}
       </div>
       <div class="feat-modal-screens-row">
         <div class="feat-modal-screenshot">
-          <img src="/screenshots/hunt-ai-chat.jpg" alt="Hunt AI chat assistant interface" loading="lazy"/>
+          <img src="/images/hunt-ai-chat.jpg" alt="Hunt AI chat assistant interface" loading="lazy"/>
         </div>
         <div class="feat-modal-screenshot">
-          <img src="/screenshots/property-intel.jpg" alt="Property intelligence dashboard" loading="lazy"/>
+          <img src="/images/property-intel.jpg" alt="Property intelligence dashboard" loading="lazy"/>
         </div>
       </div>
     </div>
@@ -390,7 +370,6 @@ section{position:relative}
     </div>
   </div>
 </div>
-
 <!-- NAVIGATION -->
 <nav class="nav" id="mainNav" aria-label="Main navigation">
   <a href="#" class="nav-logo" aria-label="Huginn — Home">
@@ -402,7 +381,6 @@ section{position:relative}
     <a href="https://cooley-lake-tracker.vercel.app" class="btn-login" target="_blank" rel="noopener" aria-label="Log in to Huginn app">Login</a>
   </div>
 </nav>
-
 <!-- SECTION 1: HERO -->
 <section class="hero" id="hero" aria-label="Hero">
   <div class="hero-bg" id="heroBg" role="img" aria-label="Hunter with bow overlooking a dramatic valley">
@@ -424,7 +402,6 @@ section{position:relative}
     <div class="hero-scroll-line"></div>
   </div>
 </section>
-
 <!-- SECTION 2: HOW IT WORKS -->
 <section class="how" id="how" aria-labelledby="howTitle">
   <div class="how-bg" aria-hidden="true"></div>
@@ -432,7 +409,6 @@ section{position:relative}
     <span class="section-eyebrow reveal">The Platform</span>
     <h2 class="section-title reveal reveal-delay-1" id="howTitle">Hunt Smarter<br/>Every Season</h2>
     <div class="how-grid reveal-stagger">
-
       <article class="how-card" onclick="openFeatureModal('map')" role="button" tabindex="0" aria-label="Learn more about Map Your Property">
         <div class="how-card-num" aria-hidden="true">01</div>
         <svg class="how-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -445,7 +421,6 @@ section{position:relative}
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         </span>
       </article>
-
       <article class="how-card" onclick="openFeatureModal('log')" role="button" tabindex="0" aria-label="Learn more about Log What You See">
         <div class="how-card-num" aria-hidden="true">02</div>
         <svg class="how-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -458,7 +433,6 @@ section{position:relative}
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         </span>
       </article>
-
       <article class="how-card" onclick="openFeatureModal('hunt')" role="button" tabindex="0" aria-label="Learn more about Hunt With Intelligence">
         <div class="how-card-num" aria-hidden="true">03</div>
         <svg class="how-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -475,11 +449,9 @@ section{position:relative}
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         </span>
       </article>
-
     </div>
   </div>
 </section>
-
 <!-- SECTION 3: BUILT IN THE FIELD -->
 <section class="field" id="field" aria-labelledby="fieldHeading">
   <div class="field-bg" id="fieldBg" style="background-image:url('/images/sunset.jpg')" role="img" aria-label="Hunter with bow at golden hour"></div>
@@ -490,7 +462,6 @@ section{position:relative}
     <p class="field-body reveal reveal-delay-2">Huginn started as a personal project to solve a real problem — too much data scattered across trail cameras, notebooks, and memory. We built the tool we wished existed. Every feature is born from time in the field.</p>
   </div>
 </section>
-
 <!-- SECTION 4: THE RESULT -->
 <section class="result" id="result" aria-label="The result">
   <div class="result-bg" id="resultBg" style="background-image:url('/images/buck.jpg')" role="img" aria-label="Whitetail buck in fall foliage"></div>
@@ -500,7 +471,6 @@ section{position:relative}
     <hr class="result-divider reveal reveal-delay-1" aria-hidden="true"/>
   </div>
 </section>
-
 <!-- SECTION 5: JOIN THE WAITLIST -->
 <section class="waitlist" id="waitlist" aria-labelledby="waitlistTitle">
   <div class="waitlist-bg" aria-hidden="true"></div>
@@ -529,7 +499,6 @@ section{position:relative}
     </div>
   </div>
 </section>
-
 <!-- FOOTER -->
 <footer class="footer" aria-label="Site footer">
   <div class="footer-inner">
@@ -541,13 +510,11 @@ section{position:relative}
     <span class="footer-domain">huginnhunt.com</span>
   </div>
 </footer>
-
 <script>
 // ── SUPABASE ──────────────────────────────────────────────────
 const SUPA_URL = 'https://drzmfoaspnahzbrrmnrv.supabase.co';
 const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRyem1mb2FzcG5haHpicnJtbnJ2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMwNzQ0NzMsImV4cCI6MjA4ODY1MDQ3M30.-2nFoPIqeutHMKFWEJUvILZ54mq2h-RR1PlC7yxm-x8';
 const sb = supabase.createClient(SUPA_URL, SUPA_KEY);
-
 // ── WAITLIST MODAL ────────────────────────────────────────────
 const modal = document.getElementById('waitlistModal');
 const modalClose = document.getElementById('modalClose');
@@ -555,13 +522,11 @@ const heroBtn = document.getElementById('heroWaitlistBtn');
 const modalSubmit = document.getElementById('modalSubmit');
 const modalStatus = document.getElementById('modalStatus');
 const modalEmail = document.getElementById('modalEmail');
-
 function openModal() {
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
   setTimeout(function() { modalEmail.focus(); }, 100);
 }
-
 function closeModal() {
   modal.classList.remove('open');
   document.body.style.overflow = '';
@@ -571,7 +536,6 @@ function closeModal() {
   modalSubmit.disabled = false;
   modalSubmit.textContent = 'Join the Waitlist';
 }
-
 heroBtn.addEventListener('click', openModal);
 modalClose.addEventListener('click', closeModal);
 modal.addEventListener('click', function(e) {
@@ -580,12 +544,10 @@ modal.addEventListener('click', function(e) {
 document.addEventListener('keydown', function(e) {
   if(e.key === 'Escape' && modal.classList.contains('open')) closeModal();
 });
-
 function setModalStatus(msg, type) {
   modalStatus.textContent = msg;
   modalStatus.className = 'modal-status ' + type;
 }
-
 modalSubmit.addEventListener('click', async function() {
   var email = modalEmail.value.trim().toLowerCase();
   if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
@@ -615,11 +577,9 @@ modalSubmit.addEventListener('click', async function() {
     modalSubmit.textContent = 'Join the Waitlist';
   }
 });
-
 // ── FEATURE MODALS ────────────────────────────────────────────
 var featModalIds = { map: 'featModalMap', log: 'featModalLog', hunt: 'featModalHunt' };
 var activeFeatModal = null;
-
 function openFeatureModal(type) {
   var id = featModalIds[type];
   if(!id) return;
@@ -629,7 +589,6 @@ function openFeatureModal(type) {
   el.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
-
 function closeFeatureModal() {
   if(activeFeatModal) {
     activeFeatModal.classList.remove('open');
@@ -639,24 +598,20 @@ function closeFeatureModal() {
     document.body.style.overflow = '';
   }
 }
-
 document.querySelectorAll('.feat-modal-close').forEach(function(btn) {
   btn.addEventListener('click', closeFeatureModal);
 });
-
 document.querySelectorAll('.feat-modal-backdrop').forEach(function(backdrop) {
   backdrop.addEventListener('click', function(e) {
     if(e.target === backdrop) closeFeatureModal();
   });
 });
-
 document.addEventListener('keydown', function(e) {
   if(e.key === 'Escape' && activeFeatModal) {
     closeFeatureModal();
     e.stopImmediatePropagation();
   }
 });
-
 document.querySelectorAll('.how-card[role="button"]').forEach(function(card) {
   card.addEventListener('keydown', function(e) {
     if(e.key === 'Enter' || e.key === ' ') {
@@ -665,7 +620,6 @@ document.querySelectorAll('.how-card[role="button"]').forEach(function(card) {
     }
   });
 });
-
 // ── NAV SCROLL BEHAVIOR ───────────────────────────────────────
 var mainNav = document.getElementById('mainNav');
 function handleNavScroll() {
@@ -673,13 +627,11 @@ function handleNavScroll() {
 }
 window.addEventListener('scroll', handleNavScroll, { passive: true });
 handleNavScroll();
-
 // ── PARALLAX ─────────────────────────────────────────────────
 var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 var heroBg = document.getElementById('heroBg');
 var fieldBg = document.getElementById('fieldBg');
 var resultBg = document.getElementById('resultBg');
-
 function applyParallax(el, scrollY, offset, factor) {
   if(!el || prefersReducedMotion) return;
   var rect = el.parentElement.getBoundingClientRect();
@@ -687,7 +639,6 @@ function applyParallax(el, scrollY, offset, factor) {
   var progress = (scrollY - offset) * factor;
   el.style.transform = 'translateY(' + progress + 'px)';
 }
-
 var ticking = false;
 var lastScrollY = 0;
 window.addEventListener('scroll', function() {
@@ -704,7 +655,6 @@ window.addEventListener('scroll', function() {
     ticking = true;
   }
 }, { passive: true });
-
 // ── HERO IMAGE LOAD ───────────────────────────────────────────
 function initHeroImg() {
   var img = new Image();
@@ -716,7 +666,6 @@ function initHeroImg() {
   img.src = '/images/hero.jpg';
 }
 initHeroImg();
-
 // ── SCROLL REVEAL ─────────────────────────────────────────────
 if(!prefersReducedMotion) {
   var revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
@@ -734,17 +683,14 @@ if(!prefersReducedMotion) {
     el.classList.add('visible');
   });
 }
-
 // ── WAITLIST FORM (bottom section) ────────────────────────────
 var waitlistForm = document.getElementById('waitlistForm');
 var waitlistStatus = document.getElementById('waitlistStatus');
 var waitlistSubmit = document.getElementById('waitlistSubmit');
-
 function setStatus(msg, type) {
   waitlistStatus.textContent = msg;
   waitlistStatus.className = 'waitlist-status ' + type;
 }
-
 waitlistForm.addEventListener('submit', async function(e) {
   e.preventDefault();
   var email = document.getElementById('waitlistEmail').value.trim().toLowerCase();
