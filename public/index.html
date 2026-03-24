@@ -127,9 +127,6 @@ section{position:relative}
 .feat-modal-bullets li{display:flex;align-items:flex-start;gap:12px;font-family:var(--font-body);font-size:15px;font-weight:400;color:var(--silver);line-height:1.7}
 .feat-modal-bullets li svg{flex-shrink:0;width:18px;height:18px;color:var(--bronze);margin-top:3px}
 .feat-modal-screens{display:flex;flex-direction:column;gap:clamp(16px,3vh,24px);margin-bottom:clamp(32px,5vh,48px)}
-.feat-modal-phone{position:relative;background:var(--obsidian-deep);border:2px solid rgba(140,115,85,0.15);border-radius:16px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,0.5);aspect-ratio:9/16;max-width:280px;margin:0 auto;width:100%}
-.feat-modal-phone img{width:100%;height:100%;object-fit:cover;display:block}
-.feat-modal-phone-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:var(--font-heading);font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--bronze);text-align:center;padding:20px}
 .feat-modal-screens-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:clamp(12px,2vw,20px)}
 .feat-modal-screenshot{border-radius:12px;overflow:hidden;box-shadow:0 6px 32px rgba(0,0,0,0.45);border:1px solid rgba(140,115,85,0.1)}
 .feat-modal-screenshot img{width:100%;height:auto;display:block}
@@ -378,8 +375,13 @@ section{position:relative}
         <div class="feat-modal-screenshot">
           <img src="/images/intel-forecast.jpg" alt="Hunt forecast and daily recommendations" loading="lazy"/>
         </div>
-        <div class="feat-modal-phone">
-          <div class="feat-modal-phone-placeholder">Hunt AI — Coming Soon</div>
+      </div>
+      <div class="feat-modal-screens-row">
+        <div class="feat-modal-screenshot">
+          <img src="/screenshots/hunt-ai-chat.jpg" alt="Hunt AI chat assistant interface" loading="lazy"/>
+        </div>
+        <div class="feat-modal-screenshot">
+          <img src="/screenshots/property-intel.jpg" alt="Property intelligence dashboard" loading="lazy"/>
         </div>
       </div>
     </div>
@@ -633,25 +635,21 @@ function closeFeatureModal() {
     activeFeatModal.classList.remove('open');
     activeFeatModal = null;
   }
-  // Only restore scroll if waitlist modal is not about to open
   if(!modal.classList.contains('open')) {
     document.body.style.overflow = '';
   }
 }
 
-// Close buttons
 document.querySelectorAll('.feat-modal-close').forEach(function(btn) {
   btn.addEventListener('click', closeFeatureModal);
 });
 
-// Click outside
 document.querySelectorAll('.feat-modal-backdrop').forEach(function(backdrop) {
   backdrop.addEventListener('click', function(e) {
     if(e.target === backdrop) closeFeatureModal();
   });
 });
 
-// ESC key (feature modals take priority over waitlist modal)
 document.addEventListener('keydown', function(e) {
   if(e.key === 'Escape' && activeFeatModal) {
     closeFeatureModal();
@@ -659,7 +657,6 @@ document.addEventListener('keydown', function(e) {
   }
 });
 
-// Keyboard accessibility for cards
 document.querySelectorAll('.how-card[role="button"]').forEach(function(card) {
   card.addEventListener('keydown', function(e) {
     if(e.key === 'Enter' || e.key === ' ') {
