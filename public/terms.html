@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Terms of Service — Huginn</title>
+<meta name="description" content="Huginn Terms of Service — the agreement governing your use of the Huginn platform."/>
+<meta property="og:title" content="Terms of Service — Huginn"/>
+<meta property="og:description" content="The agreement governing your use of the Huginn platform."/>
+<link rel="icon" href="/images/huginnhgold.png" type="image/png"/>
+<link rel="apple-touch-icon" href="/images/huginnhgold.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Raleway:wght@300;400;500;600;700&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet"/>
+<style>
+/* ── RESET & TOKENS ─────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --obsidian:#121415;
+  --obsidian-deep:#0a0b0c;
+  --obsidian-mid:#1a1c1e;
+  --bronze:#8C7355;
+  --bronze-light:#a08468;
+  --sulfur:#E5B53B;
+  --tungsten:#4A4D4E;
+  --silver:#BCC6CC;
+  --silver-dim:#8a9499;
+  --font-display:'Bebas Neue',sans-serif;
+  --font-heading:'Raleway',sans-serif;
+  --font-body:'Barlow',sans-serif;
+  --nav-h:72px;
+  --ease-out:cubic-bezier(0.22,1,0.36,1);
+}
+html{scroll-behavior:smooth;background:var(--obsidian-deep)}
+body{font-family:var(--font-body);color:var(--silver);background:var(--obsidian-deep);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+/* ── UTILITY ────────────────────────────────────────────────── */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+/* ── NAVIGATION ─────────────────────────────────────────────── */
+.nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,4vw,60px);transition:background 0.4s var(--ease-out),backdrop-filter 0.4s,border-bottom-color 0.4s;border-bottom:1px solid transparent}
+.nav.scrolled{background:rgba(10,11,12,0.96);backdrop-filter:blur(16px);border-bottom-color:rgba(140,115,85,0.15)}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;user-select:none}
+.nav-logo-img{height:38px;width:auto;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.8))}
+.nav-wordmark{font-family:var(--font-display);font-size:24px;letter-spacing:3px;color:var(--bronze);text-transform:uppercase;line-height:1}
+.nav-actions{display:flex;align-items:center;gap:12px}
+.btn-login{font-family:var(--font-heading);font-size:13px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--silver-dim);text-decoration:none;padding:8px 20px;border:1px solid rgba(188,198,204,0.2);border-radius:4px;transition:all 0.25s;cursor:pointer}
+.btn-login:hover{color:var(--silver);border-color:rgba(188,198,204,0.4);background:rgba(188,198,204,0.06)}
+.btn-login:focus-visible{outline:2px solid var(--bronze);outline-offset:3px}
+.nav-link{font-family:var(--font-heading);font-size:13px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--silver-dim);text-decoration:none;padding:8px 16px;transition:color 0.25s}
+.nav-link:hover{color:var(--bronze)}
+.nav-link:focus-visible{outline:2px solid var(--bronze);outline-offset:3px}
+.nav-link.active{color:var(--bronze)}
+/* ── SECTION BASE ────────────────────────────────────────────── */
+section{position:relative}
+.section-eyebrow{font-family:var(--font-heading);font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--bronze);margin-bottom:16px;display:block}
+/* ── LEGAL HERO ──────────────────────────────────────────────── */
+.legal-hero{background:var(--obsidian-deep);padding:calc(var(--nav-h) + clamp(60px,12vh,120px)) 0 clamp(48px,8vh,80px);text-align:center;border-bottom:1px solid rgba(140,115,85,0.1)}
+.legal-hero-inner{max-width:760px;margin:0 auto;padding:0 clamp(20px,5vw,60px)}
+.legal-hero-eyebrow{font-family:var(--font-heading);font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--bronze);display:block;margin-bottom:24px}
+.legal-hero-heading{font-family:var(--font-display);font-size:clamp(48px,8vw,96px);color:var(--silver);letter-spacing:2px;line-height:0.95;text-transform:uppercase;margin-bottom:20px}
+.legal-hero-date{font-family:var(--font-heading);font-size:12px;font-weight:600;color:var(--tungsten);letter-spacing:2px;text-transform:uppercase}
+/* ── LEGAL CONTENT ───────────────────────────────────────────── */
+.legal-content{background:var(--obsidian);padding:clamp(48px,8vh,96px) 0 clamp(64px,10vh,120px)}
+.legal-content-inner{max-width:760px;margin:0 auto;padding:0 clamp(20px,5vw,60px)}
+.legal-org{font-family:var(--font-heading);font-size:14px;font-weight:600;color:var(--silver-dim);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px}
+.legal-meta{font-family:var(--font-body);font-size:13px;color:var(--silver-dim);line-height:1.7;margin-bottom:32px}
+.legal-meta p{margin:0}
+.legal-content h2{font-family:var(--font-heading);font-size:16px;font-weight:700;color:var(--silver);letter-spacing:1px;text-transform:uppercase;margin-top:40px;margin-bottom:16px}
+.legal-content h2:first-of-type{margin-top:24px}
+.legal-content h3{font-family:var(--font-heading);font-size:14px;font-weight:700;color:var(--silver);letter-spacing:0.5px;margin-top:28px;margin-bottom:12px}
+.legal-content p{font-family:var(--font-body);font-size:16px;font-weight:400;color:#e0e6ea;line-height:1.9;margin-bottom:18px}
+.legal-content ul{font-family:var(--font-body);font-size:16px;font-weight:400;color:#e0e6ea;line-height:1.9;margin-bottom:18px;padding-left:24px}
+.legal-content ul li{margin-bottom:8px}
+.legal-content a{color:var(--bronze-light);text-decoration:none;border-bottom:1px solid rgba(140,115,85,0.4);transition:color 0.2s,border-color 0.2s}
+.legal-content a:hover{color:var(--sulfur);border-bottom-color:var(--sulfur)}
+.legal-content em{font-style:italic;color:var(--silver)}
+.legal-content strong{font-weight:600;color:var(--silver)}
+.legal-divider{width:60px;height:1px;background:rgba(140,115,85,0.3);margin:48px auto;border:none}
+/* ── FOOTER ──────────────────────────────────────────────────── */
+.footer{background:var(--obsidian-deep);border-top:1px solid rgba(140,115,85,0.1);padding:clamp(32px,5vh,52px) 0}
+.footer-inner{max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,80px);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.footer-brand{display:flex;align-items:center;gap:10px}
+.footer-raven{height:28px;width:auto;opacity:0.75}
+.footer-wordmark{font-family:var(--font-display);font-size:18px;letter-spacing:3px;color:var(--bronze);opacity:0.75}
+.footer-copy{font-family:var(--font-body);font-size:12px;font-weight:400;color:#BCC6CC;letter-spacing:0.5px}
+.footer-right{display:flex;align-items:center;gap:24px;flex-wrap:wrap;justify-content:center}
+.footer-domain{font-family:var(--font-heading);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--tungsten);opacity:0.6}
+.footer-nav-link{font-family:var(--font-heading);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--tungsten);opacity:0.6;text-decoration:none;transition:color 0.25s,opacity 0.25s}
+.footer-nav-link:hover{color:var(--bronze);opacity:1}
+/* ── RESPONSIVE ──────────────────────────────────────────────── */
+@media (max-width:768px){
+  .nav-wordmark{font-size:20px;letter-spacing:2px}
+  .legal-hero-heading{font-size:clamp(40px,12vw,64px)}
+  .footer-inner{flex-direction:column;align-items:center;text-align:center;gap:12px}
+  .footer-right{flex-direction:row;gap:16px}
+}
+@media (max-width:480px){
+  .legal-content p,.legal-content ul{font-size:15px}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<!-- NAVIGATION -->
+<nav class="nav" id="mainNav" aria-label="Main navigation">
+  <a href="/" class="nav-logo" aria-label="Huginn — Home">
+    <img src="/images/huginnhgold.png" alt="Huginn logo" class="nav-logo-img" width="38" height="38"/>
+    <span class="nav-wordmark">Huginn</span>
+  </a>
+  <div class="nav-actions">
+    <a href="/about" class="nav-link">About</a>
+    <a href="https://app.huginnhunt.com" class="btn-login" target="_blank" rel="noopener" aria-label="Log in to Huginn app">Login</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="legal-hero" aria-label="Terms of Service hero">
+  <div class="legal-hero-inner">
+    <span class="legal-hero-eyebrow">Legal</span>
+    <h1 class="legal-hero-heading">Terms of Service</h1>
+    <p class="legal-hero-date">Effective Date: July 4, 2026</p>
+  </div>
+</section>
+
+<!-- CONTENT -->
+<section class="legal-content" aria-label="Terms of Service content">
+  <div class="legal-content-inner">
+    <p class="legal-org">Huginn Advisory Group LLC</p>
+    <div class="legal-meta">
+      <p>Effective Date: July 4, 2026</p>
+      <p>Last Updated: April 2026</p>
+    </div>
+
+    <h2>Agreement to Terms</h2>
+    <p>By accessing or using the Huginn platform at app.huginnhunt.com or huginnhunt.com you agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree to these terms do not use Huginn.</p>
+    <p>Huginn is operated by Huginn Advisory Group LLC, an Illinois limited liability company. References to "Huginn," "we," "us," or "our" refer to Huginn Advisory Group LLC.</p>
+
+    <h2>Who Can Use Huginn</h2>
+    <p>You must be at least 18 years old to create a Huginn account. By using Huginn you represent that you are 18 or older and have the legal capacity to enter into these terms.</p>
+    <p>During the beta period, access to Huginn requires a valid invite code. Invite codes are non-transferable and may only be used by the person they were issued to.</p>
+
+    <h2>Your Account</h2>
+    <p>You are responsible for:</p>
+    <ul>
+      <li>Maintaining the confidentiality of your account credentials</li>
+      <li>All activity that occurs under your account</li>
+      <li>Ensuring your account information is accurate and up to date</li>
+    </ul>
+    <p>You must notify us immediately at <a href="mailto:hello@huginnhunt.com">hello@huginnhunt.com</a> if you believe your account has been compromised. We are not liable for any loss resulting from unauthorized use of your account.</p>
+    <p>We reserve the right to suspend or terminate accounts that violate these terms, engage in abusive behavior, or misuse the platform.</p>
+
+    <h2>Beta Access</h2>
+    <p>Huginn is currently in invite-only beta. During the beta period:</p>
+    <ul>
+      <li>Features may change, be added, or be removed without notice</li>
+      <li>The platform may experience downtime, bugs, or data inconsistencies</li>
+      <li>We may limit or throttle usage to manage platform stability</li>
+      <li>Beta access does not guarantee continued access after the beta period ends</li>
+      <li>We may discontinue the beta at any time</li>
+    </ul>
+    <p>We value your feedback during the beta. If you encounter bugs or have suggestions email <a href="mailto:hello@huginnhunt.com">hello@huginnhunt.com</a> or use the feedback mechanism in the app.</p>
+
+    <h2>Acceptable Use</h2>
+    <p>You agree to use Huginn only for lawful purposes and in accordance with these terms. You agree not to:</p>
+    <ul>
+      <li>Use Huginn for any illegal purpose including poaching, trespassing, or violations of local hunting regulations</li>
+      <li>Upload content you do not have the right to share including photos taken on property you do not own or have permission to access</li>
+      <li>Attempt to access another user's account or property data</li>
+      <li>Reverse engineer, decompile, or attempt to extract the source code of Huginn</li>
+      <li>Use automated tools, bots, or scripts to access or scrape Huginn</li>
+      <li>Upload malicious code, viruses, or any content designed to disrupt the platform</li>
+      <li>Misuse the AI features to generate harmful, misleading, or fraudulent content</li>
+      <li>Resell, sublicense, or commercially exploit Huginn without our written permission</li>
+    </ul>
+    <p>We reserve the right to remove any content that violates these terms without notice.</p>
+
+    <h2>Your Content</h2>
+    <p>You retain ownership of all content you upload to Huginn including trail camera photos, sighting data, property information, and notes. By uploading content to Huginn you grant us a limited, non-exclusive license to store, process, and display your content solely for the purpose of operating the platform and delivering features to you.</p>
+    <p>We do not claim ownership of your hunting data. We do not sell your content to third parties.</p>
+    <p>You are responsible for ensuring you have the right to upload any content you add to Huginn. Do not upload photos or data from properties you do not own or have explicit permission to access.</p>
+
+    <h2>AI-Generated Content and Recommendations</h2>
+    <p>Huginn uses artificial intelligence to provide buck identification suggestions, hunt recommendations, pattern analysis, and property intelligence. You acknowledge that:</p>
+    <ul>
+      <li>AI-generated content is probabilistic and may be inaccurate</li>
+      <li>Buck identification suggestions are not guaranteed to be correct</li>
+      <li>Hunt recommendations are informational only and do not guarantee hunting success</li>
+      <li>You are solely responsible for all decisions you make based on AI-generated content</li>
+      <li>AI suggestions should be verified against your own knowledge and field observations</li>
+    </ul>
+    <p>Huginn's AI features are tools to support your decision-making, not replace it. Always follow applicable hunting laws and regulations regardless of what the platform recommends.</p>
+
+    <h2>Hunting Laws and Regulations</h2>
+    <p>Huginn is a data and intelligence platform. We do not provide legal advice about hunting regulations. You are solely responsible for:</p>
+    <ul>
+      <li>Complying with all applicable federal, state, and local hunting laws and regulations</li>
+      <li>Obtaining required licenses, tags, and permits before hunting</li>
+      <li>Hunting only on property you own or have explicit permission to access</li>
+      <li>Following all firearm, archery, and equipment regulations in your jurisdiction</li>
+    </ul>
+    <p>Huginn assumes no liability for violations of hunting laws or regulations by users of the platform.</p>
+
+    <h2>Subscription and Payment</h2>
+    <p>During the beta period Huginn is available at no cost to invited users. When paid tiers are introduced:</p>
+    <ul>
+      <li>Subscription fees will be clearly communicated before any charge is made</li>
+      <li>You authorize us to charge your payment method on a recurring basis for your selected plan</li>
+      <li>Subscriptions automatically renew unless cancelled before the renewal date</li>
+      <li>Refunds are handled on a case-by-case basis — contact <a href="mailto:hello@huginnhunt.com">hello@huginnhunt.com</a></li>
+      <li>We reserve the right to change pricing with reasonable notice to existing subscribers</li>
+    </ul>
+    <p>Free tier features and limitations will be clearly defined when paid tiers launch.</p>
+
+    <h2>Intellectual Property</h2>
+    <p>Huginn and its original content, features, and functionality — including but not limited to the Huginn name, raven logo, brand assets, software, and AI systems — are owned by Huginn Advisory Group LLC and protected by applicable intellectual property laws.</p>
+    <p>You may not use our name, logo, or brand assets without written permission. You may not represent that you are affiliated with or endorsed by Huginn without written permission.</p>
+    <p>The Huginn name and raven logo are pending trademark registration with the United States Patent and Trademark Office.</p>
+
+    <h2>Third Party Services</h2>
+    <p>Huginn integrates with third party services including Supabase, Anthropic, Mapbox, Vercel, and Resend. Your use of these services through Huginn is subject to their respective terms of service and privacy policies. We are not responsible for the practices of third party services.</p>
+
+    <h2>Disclaimer of Warranties</h2>
+    <p>HUGINN IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED. TO THE FULLEST EXTENT PERMITTED BY LAW, HUGINN ADVISORY GROUP LLC DISCLAIMS ALL WARRANTIES INCLUDING IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.</p>
+    <p>We do not warrant that:</p>
+    <ul>
+      <li>The platform will be uninterrupted, error-free, or secure</li>
+      <li>Any defects will be corrected</li>
+      <li>The platform or servers are free of viruses or harmful components</li>
+      <li>AI-generated content is accurate, complete, or reliable</li>
+    </ul>
+
+    <h2>Limitation of Liability</h2>
+    <p>TO THE FULLEST EXTENT PERMITTED BY LAW, HUGINN ADVISORY GROUP LLC SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES ARISING FROM YOUR USE OF OR INABILITY TO USE HUGINN, INCLUDING BUT NOT LIMITED TO LOSS OF DATA, LOSS OF PROFITS, OR PERSONAL INJURY.</p>
+    <p>OUR TOTAL LIABILITY TO YOU FOR ANY CLAIM ARISING FROM THESE TERMS OR YOUR USE OF HUGINN SHALL NOT EXCEED THE AMOUNT YOU PAID US IN THE TWELVE MONTHS PRECEDING THE CLAIM, OR $100, WHICHEVER IS GREATER.</p>
+    <p>Some jurisdictions do not allow limitation of liability — in those jurisdictions our liability is limited to the maximum extent permitted by law.</p>
+
+    <h2>Indemnification</h2>
+    <p>You agree to indemnify, defend, and hold harmless Huginn Advisory Group LLC and its members, officers, employees, and agents from any claims, damages, losses, liabilities, and expenses — including reasonable attorney's fees — arising from your use of Huginn, your content, your violation of these terms, or your violation of any applicable law.</p>
+
+    <h2>Governing Law and Disputes</h2>
+    <p>These terms are governed by the laws of the State of Illinois without regard to conflict of law principles. Any dispute arising from these terms or your use of Huginn shall be resolved in the state or federal courts located in Illinois, and you consent to personal jurisdiction in those courts.</p>
+    <p>We encourage you to contact us at <a href="mailto:hello@huginnhunt.com">hello@huginnhunt.com</a> before initiating any legal action — most issues can be resolved quickly through direct communication.</p>
+
+    <h2>Changes to These Terms</h2>
+    <p>We may update these Terms of Service as the platform evolves. When we make material changes we will notify registered users by email and update the effective date at the top of this page. Continued use of Huginn after updated terms are posted constitutes acceptance of the updated terms.</p>
+    <p>If you do not agree to updated terms you must stop using Huginn and may request account deletion at <a href="mailto:hello@huginnhunt.com">hello@huginnhunt.com</a>.</p>
+
+    <h2>Termination</h2>
+    <p>We may suspend or terminate your access to Huginn at any time for violation of these terms, abusive behavior, or any other reason at our discretion. You may terminate your account at any time by contacting <a href="mailto:hello@huginnhunt.com">hello@huginnhunt.com</a>.</p>
+    <p>Upon termination your right to use Huginn ceases immediately. Sections 6, 10, 12, 13, 14, and 15 survive termination.</p>
+
+    <h2>Entire Agreement</h2>
+    <p>These Terms of Service and our Privacy Policy constitute the entire agreement between you and Huginn Advisory Group LLC regarding your use of the platform and supersede any prior agreements.</p>
+
+    <h2>Contact</h2>
+    <p>Huginn Advisory Group LLC<br/>
+    <a href="mailto:hello@huginnhunt.com">hello@huginnhunt.com</a><br/>
+    huginnhunt.com</p>
+
+    <hr class="legal-divider"/>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" aria-label="Site footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="/images/huginnhgold.png" alt="Huginn" class="footer-raven" width="28" height="28"/>
+      <span class="footer-wordmark">Huginn</span>
+    </div>
+    <p class="footer-copy">&copy; 2026 Huginn Advisory Group</p>
+    <div class="footer-right">
+      <a href="/" class="footer-nav-link">Home</a>
+      <a href="/privacy" class="footer-nav-link">Privacy Policy</a>
+      <a href="/terms" class="footer-nav-link">Terms of Service</a>
+      <a href="https://instagram.com/huginnhunt" target="_blank" rel="noopener" aria-label="Huginn on Instagram" class="footer-nav-link" style="display:flex;align-items:center;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <span class="footer-domain">huginnhunt.com</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── NAV SCROLL BEHAVIOR ───────────────────────────────────────
+const mainNav = document.getElementById('mainNav');
+function handleNavScroll() {
+  mainNav.classList.toggle('scrolled', window.scrollY > 60);
+}
+window.addEventListener('scroll', handleNavScroll, { passive: true });
+handleNavScroll();
+</script>
+</body>
+</html>

@@ -121,7 +121,7 @@ section{position:relative}
 .footer-wordmark{font-family:var(--font-display);font-size:18px;letter-spacing:3px;color:var(--bronze);opacity:0.75}
 /* [FIX 3] Footer copy: bumped from tungsten to silver */
 .footer-copy{font-family:var(--font-body);font-size:12px;font-weight:400;color:#BCC6CC;letter-spacing:0.5px}
-.footer-right{display:flex;align-items:center;gap:24px}
+.footer-right{display:flex;align-items:center;gap:24px;flex-wrap:wrap;justify-content:center}
 .footer-domain{font-family:var(--font-heading);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--tungsten);opacity:0.6}
 .footer-nav-link{font-family:var(--font-heading);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--tungsten);opacity:0.6;text-decoration:none;transition:color 0.25s,opacity 0.25s}
 .footer-nav-link:hover{color:var(--bronze);opacity:1}
@@ -272,6 +272,8 @@ section{position:relative}
     <p class="footer-copy">&copy; 2026 Huginn Advisory Group</p>
    <div class="footer-right">
   <a href="/" class="footer-nav-link">Home</a>
+  <a href="/privacy" class="footer-nav-link">Privacy Policy</a>
+  <a href="/terms" class="footer-nav-link">Terms of Service</a>
   <a href="https://instagram.com/huginnhunt" target="_blank" rel="noopener" aria-label="Huginn on Instagram" class="footer-nav-link" style="display:flex;align-items:center;">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
   </a>
